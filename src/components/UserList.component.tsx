@@ -1,15 +1,15 @@
 import React from 'react'
+import UserListEntry from '../components/UserListEntry.component'
 
 interface Props {
     userList: Object
 }
 
 const UserList = ({ userList }: Props) => {
-    console.log(Object.entries(userList));
     return (
-        <div>
+        <div className="userlist">
             {
-                Object.entries(userList).map(([key, user]) => <p key={key}>{user.username}</p>)
+                Object.entries(userList).map(([key, user]) => <UserListEntry key={key} username={user.username} />)
             }
         </div>
     )
