@@ -8,16 +8,34 @@ interface Props {
 }
 
 const ChatContainer = ({ client, username }: Props) => {
-    const [userList, setuserList] = useState([]);
+    const [userList, setuserList] = useState({});
+    const [messages, setmessages] = useState([]);
 
-    client.onmessage = (message: any) => {
-        const dataFromServer = JSON.parse(message.data);
-        setuserList(dataFromServer.data.users);
+    client.onmessage = (incomingMessage: any) => {
+        const dataFromServer = JSON.parse(incomingMessage.data);
+        if (dataFromServer.type === "userevent") {
+            setuserList(dataFromServer.data.users);
+        }
+
+        console.log(dataFromServer.data);
+        if (dataFromServer.type === "newmessageevent") {
+            setmessages(dataFromServer.data.messages);
+        }
     };
+
+    const sendMessage = (text: String) => {
+        const sent = new Date();
+        const messageJson = { text, username, sent }
+        client.send(JSON.stringify({
+            message: messageJson,
+            type: "newmessageevent"
+        }));
+    }
+
     return (
-        <div>
+        <div className="chatcontainer">
             <UserList userList={userList} />
-            <Chat />
+            <Chat sendMessage={sendMessage} messages={messages} />
         </div>
     )
 }

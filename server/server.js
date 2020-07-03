@@ -73,6 +73,7 @@ wsServer.on('request', function (request) {
     if (message.type === 'utf8') {
       const dataFromClient = JSON.parse(message.utf8Data);
       const json = buildJson(dataFromClient, userID);
+      console.log(messages);
       sendMessage(JSON.stringify(json));
     }
   });
