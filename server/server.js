@@ -17,6 +17,13 @@ const users = {}; // users will be stored in this object
 let messages = [];  // messages will be stored in this array
 let userActivity = [];  // every userActivity will be stored in this array
 
+const typesDef = {
+  USER_EVENT: "userevent",
+  NEW_MESSAGE_EVENT: "newmessageevent",
+  MODIFY_MESSAGE_EVENT: "modifymessageevent",
+  DELETE_MESSAGE_EVENT: "deletemessageevent"
+}
+
 
 const sendMessage = (json) => {
   // sending the data to all connected clients
@@ -25,12 +32,34 @@ const sendMessage = (json) => {
   });
 }
 
-const typesDef = {
-  USER_EVENT: "userevent",
-  NEW_MESSAGE_EVENT: "newmessageevent",
-  MODIFY_MESSAGE_EVENT: "modifymessageevent",
-  DELETE_MESSAGE_EVENT: "deletemessageevent"
+
+const buildJson = (dataFromClient, userID) => {
+  const json = { type: dataFromClient.type };
+
+  switch (dataFromClient.type) {
+    case typesDef.USER_EVENT:
+      users[userID] = dataFromClient;
+      userActivity.push(`${dataFromClient.username} joined to edit the document`);
+      json.data = { users, userActivity };
+      break;
+    case typesDef.NEW_MESSAGE_EVENT:
+      messages.push(dataFromClient.message);
+      json.data = { messages, userActivity };
+      break;
+    case typesDef.MODIFY_MESSAGE_EVENT:
+      var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
+      messages[foundIndex] = dataFromClient.message;
+      json.data = { messages, userActivity };
+      break;
+    case typesDef.DELETE_MESSAGE_EVENT:
+      var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
+      messages.splice(foundIndex, 1);
+      json.data = { messages, userActivity };
+      break;
+  }
+  return json;
 }
+
 
 wsServer.on('request', function (request) {
   var userID = uuidv4();
@@ -43,29 +72,7 @@ wsServer.on('request', function (request) {
   connection.on('message', function (message) {
     if (message.type === 'utf8') {
       const dataFromClient = JSON.parse(message.utf8Data);
-      const json = { type: dataFromClient.type };
-
-      switch (dataFromClient.type) {
-        case typesDef.USER_EVENT:
-          users[userID] = dataFromClient;
-          userActivity.push(`${dataFromClient.username} joined to edit the document`);
-          json.data = { users, userActivity };
-          break;
-        case typesDef.NEW_MESSAGE_EVENT:
-          messages.push(dataFromClient.message);
-          json.data = { messages, userActivity };
-          break;
-        case typesDef.MODIFY_MESSAGE_EVENT:
-          var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
-          messages[foundIndex] = dataFromClient.message;
-          json.data = { messages, userActivity };
-          break;
-        case typesDef.DELETE_MESSAGE_EVENT:
-          var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
-          messages.splice(foundIndex, 1);
-          json.data = { messages, userActivity };
-          break;
-      }
+      const json = buildJson(dataFromClient, userID);
       sendMessage(JSON.stringify(json));
     }
   });
@@ -80,3 +87,4 @@ wsServer.on('request', function (request) {
     sendMessage(JSON.stringify(json));    //send information that user left to all connected users
   });
 });
+
