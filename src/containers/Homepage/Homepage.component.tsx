@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import LogIn from '../components/LogIn.component';
-import ChatContainer from './ChatContainer.component';
+import LogIn from '../../components/LogIn/LogIn.component';
+import ChatContainer from '../ChatContainer/ChatContainer.component';
 
 type Props = {
     client: any
@@ -30,7 +30,6 @@ const Homepage = ({ client }: Props) => {
                     :
                     <ChatContainer client={client} username={username} />
             }
-
         </div>
     )
 }

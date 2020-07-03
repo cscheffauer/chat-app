@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import './App.css';
-import Homepage from './containers/Homepage.component';
+import Homepage from './containers/Homepage/Homepage.component';
 
 
-const client = new W3CWebSocket('ws://127.0.0.1:8001');
+export const client = new W3CWebSocket('ws://127.0.0.1:8001');
 
 
 const App = () => {

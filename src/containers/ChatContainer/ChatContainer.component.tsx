@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Chat from '../components/Chat.component';
-import UserList from '../components/UserList.component';
+import Chat from '../../components/Chat/Chat.component';
+import UserList from '../../components/UserList/UserList.component';
 
 interface Props {
     username: String,

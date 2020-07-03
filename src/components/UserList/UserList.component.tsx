@@ -1,5 +1,5 @@
 import React from 'react'
-import UserListEntry from '../components/UserListEntry.component'
+import UserListEntry from '../UserListEntry/UserListEntry.component'
 
 interface Props {
     userList: Object

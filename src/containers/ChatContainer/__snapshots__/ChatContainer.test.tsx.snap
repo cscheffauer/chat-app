@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container / ChatContainer expect to render ChatContainer container 1`] = `ShallowWrapper {}`;
+
+exports[`Container / ChatContainer expect to render Homepage component 1`] = `ShallowWrapper {}`;

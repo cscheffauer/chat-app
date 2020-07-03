@@ -5,7 +5,7 @@ interface Props {
     username: String
 }
 
-const UserListEntry = ({ username }: Props) => {
+const UserListEntry: React.FunctionComponent<Props> = ({ username }) => {
     return (
         <div className="userlistentry">
             <p className="username">
