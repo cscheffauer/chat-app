@@ -39,7 +39,7 @@ const buildJson = (dataFromClient, userID) => {
   switch (dataFromClient.type) {
     case typesDef.USER_EVENT:
       users[userID] = dataFromClient;
-      userActivity.push(`${dataFromClient.username} joined to edit the document`);
+      userActivity.push(`${dataFromClient.username} joined`);
       json.data = { users, userActivity };
       break;
     case typesDef.NEW_MESSAGE_EVENT:
@@ -80,7 +80,7 @@ wsServer.on('request', function (request) {
   connection.on('close', function (connection) {
     console.log((new Date()) + " Peer " + userID + " disconnected.");
     const json = { type: typesDef.USER_EVENT };
-    userActivity.push(`${users[userID].username} left the document`);   //push "user left" message to userActivity array
+    userActivity.push(`${users[userID].username} left`);   //push "user left" message to userActivity array
     json.data = { users, userActivity };
     delete clients[userID];   //delete userID from clients object
     delete users[userID];     //delete userID from users object

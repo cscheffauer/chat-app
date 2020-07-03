@@ -1,6 +1,6 @@
-import React, { MouseEvent, useState } from 'react'
+import React, { useState } from 'react'
 import LogIn from '../components/LogIn.component';
-import Chat from './Chat.component';
+import ChatContainer from './ChatContainer.component';
 
 type Props = {
     client: any
@@ -28,7 +28,7 @@ const Homepage = ({ client }: Props) => {
                 !loggedIn ?
                     <LogIn logInUser={logInUser} />
                     :
-                    <Chat client={client} username={username} />
+                    <ChatContainer client={client} username={username} />
             }
 
         </div>

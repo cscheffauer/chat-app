@@ -21,7 +21,6 @@ const LogIn = ({ logInUser }: Props) => {
             <form onSubmit={handleSubmit}>
                 <input onChange={changeUsername}></input>
                 <button type="submit">Log In</button>
-
             </form>
         </div>
     )
