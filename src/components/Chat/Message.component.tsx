@@ -3,14 +3,15 @@ import Linkify from 'react-linkify';
 import './Chat.scss';
 
 interface Props {
-    editMessage: (id: String) => void,
-    deleteMessage: (id: String) => void,
+    editMessage: (messageid: String) => void,
+    deleteMessage: (messageid: String) => void,
     message: {
         sent: Date,
         username: String,
         userid: String,
         text: String,
         messageid: String,
+        state: String,
     },
     userid: String
 }
@@ -26,22 +27,33 @@ const Message = ({ editMessage, deleteMessage, message, userid }: Props) => {
 
     return (
         <div className="message">
-            <p>
-                <span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span><span style={{ color: "#9da2aa", marginLeft: 10 }}>{sent}</span>
-                {
-                    (message.username !== "Meetingbot" && message.userid === userid) ?      //display edit and delete if message is not from the bot and the username is the same
-                        <>
-                            <span onClick={() => editMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 20, cursor: 'pointer' }}>×</span>
-                            <span onClick={() => deleteMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
-                        </>
-                        :
-                        <></>
-                }
 
-            </p>
-            <Linkify>
-                <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? 'grey' : 'black' }}>{message.text}</p>
-            </Linkify>
+            {
+                message.state === "DELETED" ?
+                    <p>
+                        <span style={{ color: "#9da2aa", fontWeight: 500 }}>Message has been deleted by {message.username}</span>
+                    </p>
+                    :
+                    <>
+                        <p>
+                            <span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span>
+
+                            {
+                                (message.username !== "Meetingbot" && message.userid === userid) ?      //display edit and delete if message is not from the bot and the username is the same
+                                    <>
+                                        <span onClick={() => deleteMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 20, cursor: 'pointer' }}>×</span>
+                                        <span onClick={() => editMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
+                                    </>
+                                    :
+                                    <></>
+                            }
+
+                        </p>
+                        <Linkify>
+                            <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? 'grey' : 'black' }}>{message.text}</p>
+                        </Linkify>
+                    </>
+            }
         </div >
     )
 }

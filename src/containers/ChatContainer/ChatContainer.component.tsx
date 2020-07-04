@@ -30,7 +30,7 @@ const ChatContainer = ({ client, username }: Props) => {
             setuserList(dataFromServer.data.users);
             setmessages(dataFromServer.data.messages);
         }
-        if (dataFromServer.type === "newmessageevent" || dataFromServer.type === "getallmessagesevent") {
+        if (dataFromServer.type === "newmessageevent" || dataFromServer.type === "getallmessagesevent" || dataFromServer.type === "deletemessageevent") {
             setmessages(dataFromServer.data.messages);
         }
     };
@@ -49,8 +49,12 @@ const ChatContainer = ({ client, username }: Props) => {
 
     }
 
-    const deleteMessage = () => {
-
+    const deleteMessage = (messageid: String) => {
+        console.log(messageid);
+        client.send(JSON.stringify({
+            id: messageid,
+            type: "deletemessageevent"
+        }));
     }
 
 

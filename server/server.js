@@ -21,7 +21,7 @@ const typesDef = {
   USER_EVENT: "userevent",
   USER_ID_EVENT: "useridevent",
   NEW_MESSAGE_EVENT: "newmessageevent",
-  MODIFY_MESSAGE_EVENT: "modifymessageevent",
+  EDIT_MESSAGE_EVENT: "editmessageevent",
   DELETE_MESSAGE_EVENT: "deletemessageevent"
 }
 
@@ -55,14 +55,14 @@ const buildJson = (dataFromClient, userID) => {
       messages.push({ messageid: uuidv4(), ...dataFromClient.message });
       json.data = { messages, userActivity };
       break;
-    case typesDef.MODIFY_MESSAGE_EVENT:
-      var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
-      messages[foundIndex] = dataFromClient.message;
+    case typesDef.EDIT_MESSAGE_EVENT:
+      var foundIndex = messages.findIndex(message => message.messageid == dataFromClient.id)
+      messages[foundIndex] = { state: "EDITED", ...dataFromClient.message };
       json.data = { messages, userActivity };
       break;
     case typesDef.DELETE_MESSAGE_EVENT:
-      var foundIndex = messages.findIndex(message => message.id == dataFromClient.id)
-      messages.splice(foundIndex, 1);
+      var foundIndex = messages.findIndex(message => message.messageid == dataFromClient.id)
+      messages[foundIndex] = { state: "DELETED", ...messages[foundIndex] };
       json.data = { messages, userActivity };
       break;
   }

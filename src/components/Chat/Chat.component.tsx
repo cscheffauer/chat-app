@@ -7,8 +7,8 @@ interface Props {
     sendMessage: (message: String) => void,
     editMessage: any,
     deleteMessage: any,
-    messages: Array<{ username: String, userid: String, text: String, sent: Date, messageid: String }>,
-    userid: String
+    messages: Array<{ username: String, userid: String, text: String, sent: Date, messageid: String, state: String }>,
+    userid: String,
 }
 
 const Chat = ({ sendMessage, messages, ...PropsFromParent }: Props) => {
