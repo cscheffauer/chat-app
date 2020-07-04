@@ -1,4 +1,4 @@
-import React, { FormEvent, KeyboardEvent, useState } from 'react'
+import React, { FormEvent, KeyboardEvent, useState, useEffect, useRef } from 'react'
 
 import Message from './Message.component'
 import './Chat.scss';
@@ -10,6 +10,13 @@ interface Props {
 
 const Chat = ({ sendMessage, messages }: Props) => {
     const [message, setmessage] = useState("")
+    const messageInput = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (messageInput.current !== null) {
+            messageInput.current.focus();
+        }
+    });
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -33,7 +40,7 @@ const Chat = ({ sendMessage, messages }: Props) => {
             </div>
             <div className="chatBox">
                 <form onSubmit={handleSubmit}>
-                    <input placeholder={"Message"} onChange={handleChange} value={message} type="text"></input>
+                    <input ref={messageInput} placeholder={"Message"} onChange={handleChange} value={message} type="text"></input>
                 </form>
             </div>
         </div>
