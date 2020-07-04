@@ -11,12 +11,16 @@ interface Props {
 const Chat = ({ sendMessage, messages }: Props) => {
     const [message, setmessage] = useState("")
     const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
+    const scrollArea = useRef<HTMLDivElement>(null);        //ref for scrollArea
 
-    useEffect(() => {                          //grab all messages after render
+    useEffect(() => {
         if (messageInput.current !== null) {
-            messageInput.current.focus();           //focus on the messageInput after render
+            messageInput.current.focus();           //focus on the messageInput after messages changed
         }
-    }, []);
+        if (scrollArea.current !== null) {
+            scrollArea.current.scrollTop = scrollArea.current.scrollHeight;     //to scroll to the bottom after messages changed
+        }
+    }, [messages]);
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -32,7 +36,7 @@ const Chat = ({ sendMessage, messages }: Props) => {
     }
     return (
         <div className="chatWindow">
-            <div className="chatMessages">
+            <div ref={scrollArea} className="chatMessages">
                 {
                     messages.map((message, i) => <Message key={i} message={message} />)
                 }

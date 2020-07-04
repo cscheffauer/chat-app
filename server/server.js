@@ -81,14 +81,16 @@ wsServer.on('request', function (request) {
   // user disconnected
   connection.on('close', function (connection) {
     console.log((new Date()) + " User " + userID + " disconnected.");
-    const json = { type: typesDef.USER_EVENT };
-    userActivity.push(`${users[userID].username} left`);   //push "user left" message to userActivity array
-    messages.push({ text: `${users[userID].username} left.`, username: "Meetingbot", sent: new Date() });
-    delete users[userID];     //delete userID from users object
     delete clients[userID];   //delete userID from clients object
+    if (users[userID] !== undefined) {
+      const json = { type: typesDef.USER_EVENT };
+      userActivity.push(`${users[userID].username} left`);   //push "user left" message to userActivity array
+      messages.push({ text: `${users[userID].username} left.`, username: "Meetingbot", sent: new Date() });
+      delete users[userID];     //delete userID from users object
 
-    json.data = { users, messages, userActivity };
-    broadcast(JSON.stringify(json));    //send information that user left to all connected users
+      json.data = { users, messages, userActivity };
+      broadcast(JSON.stringify(json));    //send information that user left to all connected users
+    }
   });
 });
 
