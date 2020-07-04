@@ -38,7 +38,7 @@ const buildJson = (dataFromClient, userID) => {
 
   switch (dataFromClient.type) {
     case typesDef.USER_EVENT:
-      users[userID] = dataFromClient;
+      users[userID] = dataFromClient.user;
       userActivity.push(`${dataFromClient.username} joined`);
       json.data = { users, userActivity };
       break;

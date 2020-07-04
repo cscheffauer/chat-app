@@ -17,7 +17,9 @@ const Homepage = ({ client }: Props) => {
     const logInUser = (username: String) => {
         setusername(username);
         client.send(JSON.stringify({
-            username,
+            user: {
+                username
+            },
             type: "userevent"
         }));
 
