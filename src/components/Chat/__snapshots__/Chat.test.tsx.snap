@@ -1,3 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component / Chat expect to render Chat component 1`] = `ShallowWrapper {}`;
+exports[`Component / Chat expect to render Chat component 1`] = `
+<div
+  className="chatWindow"
+>
+  <div
+    className="chatMessages"
+  >
+    <p
+      key="0"
+    >
+      <Component />
+       ... 
+      Max
+      : 
+      Hallo
+    </p>
+    <p
+      key="1"
+    >
+      <Component />
+       ... 
+      John
+      : 
+      Hi
+    </p>
+    <p
+      key="2"
+    >
+      <Component />
+       ... 
+      Jeffrey
+      : 
+      What's up?
+    </p>
+  </div>
+  <div
+    className="chatBox"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>
+`;

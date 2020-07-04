@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-import './App.css';
+import './App.scss';
 import Homepage from './containers/Homepage/Homepage.component';
+import Header from './components/Header/Header.component';
 
 
 export const client = new W3CWebSocket('ws://127.0.0.1:8001');
@@ -28,20 +29,20 @@ const App = () => {
       case 'established':
         return <Homepage client={client} />
       case 'error':
-        return <div className="errorboundary">< h3 >The Pexip Chat is currently unavailable!</h3 > <p>Pls contact support.</p></div >
+        return <div className="errorboundary">< h3 >Chat is currently unavailable!</h3 > <p>Pls contact support.</p></div >
       default:
         return <div />
     }
   }
 
   return (
-    <div>
+    <>
+      <Header />
       {
         renderConnectionSwitch()
       }
-    </div >
+    </>
   );
-
 
 }
 

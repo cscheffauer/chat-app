@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import LogIn from '../../components/LogIn/LogIn.component';
 import ChatContainer from '../ChatContainer/ChatContainer.component';
+import Header from '../../components/Header/Header.component';
+
+import './Homepage.scss';
 
 type Props = {
     client: any
@@ -23,7 +26,7 @@ const Homepage = ({ client }: Props) => {
 
 
     return (
-        <div>
+        <div className="homepage">
             {
                 !loggedIn ?
                     <LogIn logInUser={logInUser} />

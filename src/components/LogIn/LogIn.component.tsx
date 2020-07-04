@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react'
+import './LogIn.scss';
 
 interface Props {
     logInUser: (event: any) => void
@@ -17,10 +18,11 @@ const LogIn = ({ logInUser }: Props) => {
         logInUser(username)
     }
     return (
-        <div>
+        <div className="login">
+            <p>Please type in your name to join:</p>
             <form onSubmit={handleSubmit}>
                 <input onChange={changeUsername}></input>
-                <button type="submit">Log In</button>
+                <button type="submit">Join</button>
             </form>
         </div>
     )

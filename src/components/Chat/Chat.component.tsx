@@ -29,7 +29,6 @@ const Chat = ({ sendMessage, messages }: Props) => {
             <div className="chatBox">
                 <form onSubmit={handleSubmit}>
                     <input onChange={handleChange} value={message} type="text"></input>
-
                     <button type="submit">Send</button>
                 </form>
             </div>
