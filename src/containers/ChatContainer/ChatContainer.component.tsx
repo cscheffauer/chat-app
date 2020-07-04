@@ -10,6 +10,7 @@ interface Props {
 
 const ChatContainer = ({ client, username }: Props) => {
     const [userList, setuserList] = useState({});
+    const [userid, setuserid] = useState("");
     const [participantNumber, setparticipantNumber] = useState(0);
     const [messages, setmessages] = useState([]);
     const [selected, setselected] = useState(2);        //set initial tab to be shown to Chat tab
@@ -21,6 +22,10 @@ const ChatContainer = ({ client, username }: Props) => {
     client.onmessage = (incomingMessage: any) => {
         const dataFromServer = JSON.parse(incomingMessage.data);
         console.log(dataFromServer);
+
+        if (dataFromServer.type === "useridevent") {
+            setuserid(dataFromServer.data.userid);
+        }
         if (dataFromServer.type === "userevent") {
             setuserList(dataFromServer.data.users);
             setmessages(dataFromServer.data.messages);
@@ -32,11 +37,20 @@ const ChatContainer = ({ client, username }: Props) => {
 
     const sendMessage = (text: String) => {
         const sent = new Date();
-        const messageJson = { text, username, sent }
+        const messageJson = { text, username, userid, sent }
         client.send(JSON.stringify({
             message: messageJson,
             type: "newmessageevent"
         }));
+    }
+
+
+    const editMessage = () => {
+
+    }
+
+    const deleteMessage = () => {
+
     }
 
 
@@ -46,7 +60,7 @@ const ChatContainer = ({ client, username }: Props) => {
             {selected === 1 ?           //if tabIndex 1 (=User List) is selected
                 <UserList userList={userList} />
                 :                       //if tabIndex 2 (=Chat) is selected
-                <Chat sendMessage={sendMessage} messages={messages} />
+                <Chat sendMessage={sendMessage} editMessage={editMessage} deleteMessage={deleteMessage} messages={messages} userid={userid} />
             }
         </div>
     )

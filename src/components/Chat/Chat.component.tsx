@@ -5,10 +5,13 @@ import './Chat.scss';
 
 interface Props {
     sendMessage: (message: String) => void,
-    messages: Array<{ username: String, text: String, sent: Date }>
+    editMessage: any,
+    deleteMessage: any,
+    messages: Array<{ username: String, userid: String, text: String, sent: Date, messageid: String }>,
+    userid: String
 }
 
-const Chat = ({ sendMessage, messages }: Props) => {
+const Chat = ({ sendMessage, messages, ...PropsFromParent }: Props) => {
     const [message, setmessage] = useState("")
     const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
     const scrollArea = useRef<HTMLDivElement>(null);        //ref for scrollArea
@@ -34,11 +37,12 @@ const Chat = ({ sendMessage, messages }: Props) => {
             setmessage("");
         }
     }
+
     return (
         <div className="chatWindow">
             <div ref={scrollArea} className="chatMessages">
                 {
-                    messages.map((message, i) => <Message key={i} message={message} />)
+                    messages.map((message, i) => <Message key={i} message={message} {...PropsFromParent} />)
                 }
 
             </div>

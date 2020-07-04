@@ -19,9 +19,16 @@ let userActivity = [];  // every userActivity will be stored in this array
 
 const typesDef = {
   USER_EVENT: "userevent",
+  USER_ID_EVENT: "useridevent",
   NEW_MESSAGE_EVENT: "newmessageevent",
   MODIFY_MESSAGE_EVENT: "modifymessageevent",
   DELETE_MESSAGE_EVENT: "deletemessageevent"
+}
+
+const sendUserIDToClient = (userID) => {
+  const json = { type: typesDef.USER_ID_EVENT };
+  json.data = { userid: userID };
+  clients[userID].sendUTF(JSON.stringify(json));      //send json as a UTF-8 websocket message to the connection of all clients
 }
 
 
@@ -41,10 +48,11 @@ const buildJson = (dataFromClient, userID) => {
       users[userID] = dataFromClient.user;
       userActivity.push(`${dataFromClient.user.username} joined`);
       messages.push({ text: `${dataFromClient.user.username} joined.`, username: "Meetingbot", sent: new Date() });
+      sendUserIDToClient(userID);
       json.data = { users, messages, userActivity };
       break;
     case typesDef.NEW_MESSAGE_EVENT:
-      messages.push(dataFromClient.message);
+      messages.push({ messageid: uuidv4(), ...dataFromClient.message });
       json.data = { messages, userActivity };
       break;
     case typesDef.MODIFY_MESSAGE_EVENT:
@@ -72,10 +80,9 @@ wsServer.on('request', function (request) {
 
   connection.on('message', function (message) {
     if (message.type === 'utf8') {
-      const dataFromClient = JSON.parse(message.utf8Data);                                             //broadcast every other change
+      const dataFromClient = JSON.parse(message.utf8Data);
       const json = buildJson(dataFromClient, userID);
       broadcast(JSON.stringify(json));
-
     }
   });
   // user disconnected
