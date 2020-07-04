@@ -45,6 +45,7 @@ const buildJson = (dataFromClient, userID) => {
     case typesDef.USER_EVENT:
       users[userID] = dataFromClient.user;
       userActivity.push(`${dataFromClient.user.username} joined`);
+      messages.push({ text: `${dataFromClient.user.username} joined.`, username: "Meetingbot", sent: new Date() });
       json.data = { users, userActivity };
       break;
     case typesDef.NEW_MESSAGE_EVENT:
