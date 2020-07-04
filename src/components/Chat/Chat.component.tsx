@@ -1,5 +1,6 @@
 import React, { FormEvent, KeyboardEvent, useState } from 'react'
 
+import Message from './Message.component'
 import './Chat.scss';
 
 interface Props {
@@ -26,7 +27,7 @@ const Chat = ({ sendMessage, messages }: Props) => {
         <div className="chatWindow">
             <div className="chatMessages">
                 {
-                    messages.map((message, i) => <p key={i}>{message.sent} ... {message.username}: {message.text}</p>)
+                    messages.map((message, i) => <Message key={i} message={message} />)
                 }
 
             </div>

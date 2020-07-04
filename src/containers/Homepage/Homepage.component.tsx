@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import LogIn from '../../components/LogIn/LogIn.component';
 import ChatContainer from '../ChatContainer/ChatContainer.component';
-import Header from '../../components/Header/Header.component';
 
 import './Homepage.scss';
 
