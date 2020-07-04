@@ -1,0 +1,28 @@
+.chatWindow {
+    height: 84vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    .chatMessages {
+        flex:1;
+    }
+    .chatBox {
+        height: 8vh;
+        display: table;
+        form {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            input {
+                border-radius: 5px;
+                border: 1px solid #a3a3a3;
+                font-size: 1.2em;
+                height: 5vh;
+                width: 94vw;
+                box-sizing: border-box;
+                padding: 12px;
+            }
+        }
+    }
+}

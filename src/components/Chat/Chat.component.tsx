@@ -1,5 +1,7 @@
 import React, { FormEvent, KeyboardEvent, useState } from 'react'
 
+import './Chat.scss';
+
 interface Props {
     sendMessage: (message: String) => void,
     messages: Array<{ username: String, text: String, sent: Date }>
@@ -15,8 +17,10 @@ const Chat = ({ sendMessage, messages }: Props) => {
 
     const handleSubmit = (event: FormEvent | KeyboardEvent) => {
         event.preventDefault();
-        sendMessage(message);
-        setmessage("");
+        if (message.length > 0) {
+            sendMessage(message);
+            setmessage("");
+        }
     }
     return (
         <div className="chatWindow">
@@ -28,8 +32,7 @@ const Chat = ({ sendMessage, messages }: Props) => {
             </div>
             <div className="chatBox">
                 <form onSubmit={handleSubmit}>
-                    <input onChange={handleChange} value={message} type="text"></input>
-                    <button type="submit">Send</button>
+                    <input placeholder={"Message"} onChange={handleChange} value={message} type="text"></input>
                 </form>
             </div>
         </div>
