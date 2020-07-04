@@ -1,6 +1,8 @@
 import React from 'react'
 import UserListEntry from '../UserListEntry/UserListEntry.component'
 
+import './UserList.scss';
+
 interface Props {
     userList: Object
 }

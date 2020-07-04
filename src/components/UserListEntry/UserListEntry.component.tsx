@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './UserListEntry.scss';
+
 interface Props {
     key: String,
     username: String
