@@ -5,18 +5,20 @@ import './Chat.scss';
 
 interface Props {
     sendMessage: (message: String) => void,
+    getAllMessages: () => void,
     messages: Array<{ username: String, text: String, sent: Date }>
 }
 
-const Chat = ({ sendMessage, messages }: Props) => {
+const Chat = ({ sendMessage, getAllMessages, messages }: Props) => {
     const [message, setmessage] = useState("")
-    const messageInput = useRef<HTMLInputElement>(null);
+    const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
 
     useEffect(() => {
+        getAllMessages();                           //grab all messages after render
         if (messageInput.current !== null) {
-            messageInput.current.focus();
+            messageInput.current.focus();           //focus on the messageInput after render
         }
-    });
+    }, []);
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
         event.preventDefault();

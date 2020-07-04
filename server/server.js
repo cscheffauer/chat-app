@@ -19,16 +19,21 @@ let userActivity = [];  // every userActivity will be stored in this array
 
 const typesDef = {
   USER_EVENT: "userevent",
+  GET_ALL_MESSAGES_EVENT: "getallmessagesevent",
   NEW_MESSAGE_EVENT: "newmessageevent",
   MODIFY_MESSAGE_EVENT: "modifymessageevent",
   DELETE_MESSAGE_EVENT: "deletemessageevent"
 }
 
+const sendToClient = (json, userID) => {
+  console.log("sending to " + userID);
+  clients[userID].sendUTF(json);      //send json as a UTF-8 websocket message to the connection of the client
+}
 
-const sendMessage = (json) => {
+const broadcast = (json) => {
   // sending the data to all connected clients
   Object.keys(clients).map((client) => {
-    clients[client].sendUTF(json);      //send json as a UTF-8 websocket message to the connection of the client
+    clients[client].sendUTF(json);      //send json as a UTF-8 websocket message to the connection of all clients
   });
 }
 
@@ -39,7 +44,7 @@ const buildJson = (dataFromClient, userID) => {
   switch (dataFromClient.type) {
     case typesDef.USER_EVENT:
       users[userID] = dataFromClient.user;
-      userActivity.push(`${dataFromClient.username} joined`);
+      userActivity.push(`${dataFromClient.user.username} joined`);
       json.data = { users, userActivity };
       break;
     case typesDef.NEW_MESSAGE_EVENT:
@@ -72,9 +77,14 @@ wsServer.on('request', function (request) {
   connection.on('message', function (message) {
     if (message.type === 'utf8') {
       const dataFromClient = JSON.parse(message.utf8Data);
-      const json = buildJson(dataFromClient, userID);
-      console.log(messages);
-      sendMessage(JSON.stringify(json));
+      if (dataFromClient.type === typesDef.GET_ALL_MESSAGES_EVENT) {      //send all messages just to the client who requested
+        const json = { type: dataFromClient.type };
+        json.data = { messages, userActivity };
+        sendToClient(JSON.stringify(json), userID);
+      } else {                                                  //broadcast every other change
+        const json = buildJson(dataFromClient, userID);
+        broadcast(JSON.stringify(json));
+      }
     }
   });
   // user disconnected
@@ -85,7 +95,7 @@ wsServer.on('request', function (request) {
     json.data = { users, userActivity };
     delete clients[userID];   //delete userID from clients object
     delete users[userID];     //delete userID from users object
-    sendMessage(JSON.stringify(json));    //send information that user left to all connected users
+    broadcast(JSON.stringify(json));    //send information that user left to all connected users
   });
 });
 
