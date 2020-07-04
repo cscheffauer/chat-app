@@ -9,7 +9,7 @@ interface Props {
 
 const Tab = ({ tabIndex, tabName, setselected, selected }: Props) => {
     return (
-        <div className="tab">
+        <div className={`tab ${selected === tabIndex ? 'selected' : ''}`}>
             <p onClick={() => setselected(tabIndex)}>{tabName}</p>
         </div>
     )

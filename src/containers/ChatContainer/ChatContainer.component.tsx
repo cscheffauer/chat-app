@@ -12,10 +12,10 @@ const ChatContainer = ({ client, username }: Props) => {
     const [userList, setuserList] = useState({});
     const [participantNumber, setparticipantNumber] = useState(0);
     const [messages, setmessages] = useState([]);
-    const [selected, setselected] = useState(2);
+    const [selected, setselected] = useState(2);        //set initial tab to be shown to Chat tab
 
     useEffect(() => {
-        setparticipantNumber(Object.keys(userList).length)
+        setparticipantNumber(Object.keys(userList).length)      //get keys of userList and set the length of it as the participant number
     }, [userList])
 
     client.onmessage = (incomingMessage: any) => {
@@ -40,9 +40,9 @@ const ChatContainer = ({ client, username }: Props) => {
     return (
         <div className="chatcontainer">
             <Tabs setselected={setselected} selected={selected} participantNumber={participantNumber} />
-            {selected === 1 ?
+            {selected === 1 ?           //if tabIndex 1 (=User List) is selected
                 <UserList userList={userList} />
-                :
+                :                       //if tabIndex 2 (=Chat) is selected
                 <Chat sendMessage={sendMessage} messages={messages} />
             }
         </div>
