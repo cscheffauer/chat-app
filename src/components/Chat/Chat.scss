@@ -7,6 +7,10 @@
     .chatMessages {
         flex:1;
         overflow-y: auto;
+        .message {
+            margin-top: 2vh;
+            margin-left: 3vh;
+        }
     }
     .chatBox {
         height: 8vh;

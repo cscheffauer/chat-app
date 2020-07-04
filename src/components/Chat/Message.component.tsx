@@ -11,10 +11,13 @@ interface Props {
 }
 
 const Message = ({ message }: Props) => {
+    const sentDate = new Date(message.sent);
+    const sent = sentDate.getHours() + ":" + sentDate.getMinutes();
     return (
-        <div>
-            <p>{message.sent} ... {message.username}: {message.text}</p>
-        </div>
+        <div className="message">
+            <p><span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span><span style={{ color: "#9da2aa", marginLeft: 10 }}>{sent}</span> </p>
+            <p style={{ lineHeight: '150%' }}>{message.text}</p>
+        </div >
     )
 }
 
