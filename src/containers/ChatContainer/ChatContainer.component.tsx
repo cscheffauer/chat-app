@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Chat from '../../components/Chat/Chat.component';
 import UserList from '../../components/UserList/UserList.component';
+import Tabs from '../../components/Tabs/Tabs.component'
 
 interface Props {
     username: String,
@@ -10,6 +11,7 @@ interface Props {
 const ChatContainer = ({ client, username }: Props) => {
     const [userList, setuserList] = useState({});
     const [messages, setmessages] = useState([]);
+    const [selected, setselected] = useState(2);
 
     client.onmessage = (incomingMessage: any) => {
         const dataFromServer = JSON.parse(incomingMessage.data);
@@ -34,8 +36,12 @@ const ChatContainer = ({ client, username }: Props) => {
 
     return (
         <div className="chatcontainer">
-            <UserList userList={userList} />
-            <Chat sendMessage={sendMessage} messages={messages} />
+            <Tabs setselected={setselected} selected={selected} participantNumber={5} />
+            {selected === 1 ?
+                <UserList userList={userList} />
+                :
+                <Chat sendMessage={sendMessage} messages={messages} />
+            }
         </div>
     )
 }
