@@ -23,6 +23,7 @@ const ChatContainer = ({ client, username }: Props) => {
         console.log(dataFromServer);
         if (dataFromServer.type === "userevent") {
             setuserList(dataFromServer.data.users);
+            setmessages(dataFromServer.data.messages);
         }
         if (dataFromServer.type === "newmessageevent" || dataFromServer.type === "getallmessagesevent") {
             setmessages(dataFromServer.data.messages);
@@ -38,11 +39,6 @@ const ChatContainer = ({ client, username }: Props) => {
         }));
     }
 
-    const getAllMessages = () => {
-        client.send(JSON.stringify({
-            type: "getallmessagesevent"
-        }));
-    }
 
     return (
         <div className="chatcontainer">
@@ -50,7 +46,7 @@ const ChatContainer = ({ client, username }: Props) => {
             {selected === 1 ?           //if tabIndex 1 (=User List) is selected
                 <UserList userList={userList} />
                 :                       //if tabIndex 2 (=Chat) is selected
-                <Chat sendMessage={sendMessage} getAllMessages={getAllMessages} messages={messages} />
+                <Chat sendMessage={sendMessage} messages={messages} />
             }
         </div>
     )

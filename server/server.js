@@ -19,16 +19,11 @@ let userActivity = [];  // every userActivity will be stored in this array
 
 const typesDef = {
   USER_EVENT: "userevent",
-  GET_ALL_MESSAGES_EVENT: "getallmessagesevent",
   NEW_MESSAGE_EVENT: "newmessageevent",
   MODIFY_MESSAGE_EVENT: "modifymessageevent",
   DELETE_MESSAGE_EVENT: "deletemessageevent"
 }
 
-const sendToClient = (json, userID) => {
-  console.log("sending to " + userID);
-  clients[userID].sendUTF(json);      //send json as a UTF-8 websocket message to the connection of the client
-}
 
 const broadcast = (json) => {
   // sending the data to all connected clients
@@ -46,7 +41,7 @@ const buildJson = (dataFromClient, userID) => {
       users[userID] = dataFromClient.user;
       userActivity.push(`${dataFromClient.user.username} joined`);
       messages.push({ text: `${dataFromClient.user.username} joined.`, username: "Meetingbot", sent: new Date() });
-      json.data = { users, userActivity };
+      json.data = { users, messages, userActivity };
       break;
     case typesDef.NEW_MESSAGE_EVENT:
       messages.push(dataFromClient.message);
@@ -77,25 +72,22 @@ wsServer.on('request', function (request) {
 
   connection.on('message', function (message) {
     if (message.type === 'utf8') {
-      const dataFromClient = JSON.parse(message.utf8Data);
-      if (dataFromClient.type === typesDef.GET_ALL_MESSAGES_EVENT) {      //send all messages just to the client who requested
-        const json = { type: dataFromClient.type };
-        json.data = { messages, userActivity };
-        sendToClient(JSON.stringify(json), userID);
-      } else {                                                  //broadcast every other change
-        const json = buildJson(dataFromClient, userID);
-        broadcast(JSON.stringify(json));
-      }
+      const dataFromClient = JSON.parse(message.utf8Data);                                             //broadcast every other change
+      const json = buildJson(dataFromClient, userID);
+      broadcast(JSON.stringify(json));
+
     }
   });
   // user disconnected
   connection.on('close', function (connection) {
-    console.log((new Date()) + " Peer " + userID + " disconnected.");
+    console.log((new Date()) + " User " + userID + " disconnected.");
     const json = { type: typesDef.USER_EVENT };
     userActivity.push(`${users[userID].username} left`);   //push "user left" message to userActivity array
-    json.data = { users, userActivity };
-    delete clients[userID];   //delete userID from clients object
+    messages.push({ text: `${users[userID].username} left.`, username: "Meetingbot", sent: new Date() });
     delete users[userID];     //delete userID from users object
+    delete clients[userID];   //delete userID from clients object
+
+    json.data = { users, messages, userActivity };
     broadcast(JSON.stringify(json));    //send information that user left to all connected users
   });
 });

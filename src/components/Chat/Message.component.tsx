@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Linkify from 'react-linkify';
 import './Chat.scss';
-
 
 interface Props {
     message: {
@@ -16,7 +16,9 @@ const Message = ({ message }: Props) => {
     return (
         <div className="message">
             <p><span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span><span style={{ color: "#9da2aa", marginLeft: 10 }}>{sent}</span> </p>
-            <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? 'grey' : 'black' }}>{message.text}</p>
+            <Linkify>
+                <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? 'grey' : 'black' }}>{message.text}</p>
+            </Linkify>
         </div >
     )
 }
