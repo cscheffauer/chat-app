@@ -10,6 +10,7 @@ describe('Component / LogIn', () => {
     it('expect to render LogIn component', () => {
         expect(LogInWrapper).toMatchSnapshot();
     })
+
 })
 
 

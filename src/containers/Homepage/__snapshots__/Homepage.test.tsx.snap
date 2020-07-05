@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container / Homepage expect to render Homepage container 1`] = `
-<div>
+<div
+  className="homepage"
+>
   <LogIn
     logInUser={[Function]}
   />

@@ -4,12 +4,17 @@ exports[`Container / ChatContainer expect to render ChatContainer container 1`] 
 <div
   className="chatcontainer"
 >
-  <UserList
-    userList={Object {}}
+  <Tabs
+    participantNumber={0}
+    selected={2}
+    setselected={[Function]}
   />
   <Chat
+    deleteMessage={[Function]}
+    editMessage={[Function]}
     messages={Array []}
     sendMessage={[Function]}
+    userid=""
   />
 </div>
 `;
