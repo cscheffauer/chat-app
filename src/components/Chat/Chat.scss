@@ -10,13 +10,14 @@
         .message {
             margin-top: 3vh;
             margin-left: 3vh;
+            margin-right: 2vh;
             a {
                 text-decoration: none;
                 color:#098aed;
             }
         }
     }
-    .chatBox {
+    .chatInput {
         height: 8vh;
         display: table;
         form {

@@ -6,7 +6,7 @@ import Homepage from './containers/Homepage/Homepage.component';
 import Header from './components/Header/Header.component';
 
 
-export const client = new W3CWebSocket('ws://192.168.0.10:8001');
+export const client = new W3CWebSocket('ws://localhost:8001');
 
 
 const App = () => {

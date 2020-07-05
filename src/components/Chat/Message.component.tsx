@@ -1,25 +1,17 @@
 import React from 'react';
 import Linkify from 'react-linkify';
 import './Chat.scss';
+import { MessageType } from '../../models/chat.model'
 
 interface Props {
-    editMessage: (messageid: String) => void,
+    typeInEditMessage: (messageid: String) => void,
     deleteMessage: (messageid: String) => void,
-    message: {
-        sent: Date,
-        username: String,
-        userid: String,
-        text: String,
-        messageid: String,
-        state: String,
-    },
+    message: MessageType
     userid: String
 }
 
 
-
-
-const Message = ({ editMessage, deleteMessage, message, userid }: Props) => {
+const Message = ({ typeInEditMessage, deleteMessage, message, userid }: Props) => {
     const sentDate = new Date(message.sent);
     const minutes = sentDate.getMinutes() < 10 ? "0" + sentDate.getMinutes() : sentDate.getMinutes()
     const hours = sentDate.getHours() < 10 ? "0" + sentDate.getHours() : sentDate.getHours()
@@ -29,20 +21,20 @@ const Message = ({ editMessage, deleteMessage, message, userid }: Props) => {
         <div className="message">
 
             {
-                message.state === "DELETED" ?
+                message.state === "DELETED" ?   //display "Message has been deleted" if message state == DELETED
                     <p>
                         <span style={{ color: "#9da2aa", fontWeight: 500 }}>Message has been deleted by {message.username}</span>
                     </p>
                     :
                     <>
                         <p>
-                            <span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span>
+                            <span style={{ color: "#00002c", fontWeight: 500 }}>{message.username}</span><span style={{ color: "#9da2aa", marginLeft: 10 }}>{sent}</span>
 
                             {
                                 (message.username !== "Meetingbot" && message.userid === userid) ?      //display edit and delete if message is not from the bot and the username is the same
                                     <>
                                         <span onClick={() => deleteMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 20, cursor: 'pointer' }}>×</span>
-                                        <span onClick={() => editMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
+                                        <span onClick={() => typeInEditMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
                                     </>
                                     :
                                     <></>

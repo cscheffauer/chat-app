@@ -3,15 +3,17 @@ import React, { FormEvent, KeyboardEvent, useState, useEffect, useRef } from 're
 import Message from './Message.component'
 import './Chat.scss';
 
+import { MessageType } from '../../models/chat.model'
+
 interface Props {
     sendMessage: (message: String) => void,
     editMessage: any,
-    deleteMessage: any,
-    messages: Array<{ username: String, userid: String, text: String, sent: Date, messageid: String, state: String }>,
+    deleteMessage: (messageid: String) => void,
+    messages: Array<MessageType>,
     userid: String,
 }
 
-const Chat = ({ sendMessage, messages, ...PropsFromParent }: Props) => {
+const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props) => {
     const [message, setmessage] = useState("")
     const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
     const scrollArea = useRef<HTMLDivElement>(null);        //ref for scrollArea
@@ -38,15 +40,19 @@ const Chat = ({ sendMessage, messages, ...PropsFromParent }: Props) => {
         }
     }
 
+    const typeInEditMessage = (messageid: String) => {
+
+    }
+
     return (
         <div className="chatWindow">
             <div ref={scrollArea} className="chatMessages">
                 {
-                    messages.map((message, i) => <Message key={i} message={message} {...PropsFromParent} />)
+                    messages.map((message, i) => <Message key={i} message={message} typeInEditMessage={typeInEditMessage} {...PropsFromParent} />)
                 }
 
             </div>
-            <div className="chatBox">
+            <div className="chatInput">
                 <form onSubmit={handleSubmit}>
                     <input ref={messageInput} placeholder={"Message"} onChange={handleChange} value={message} type="text"></input>
                 </form>
