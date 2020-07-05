@@ -1,8 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chat App
+ 
+After login with your username you can easily send, edit and delete messages and see what your colleagues have written. <br />In the participants tab you can see a list of currently connected users.
 
+## Tech
+
+This Chat App uses a number of open source projects to work properly:
+
+* [React] - a JS library for building user interfaces!
+* [React-Linkify] - React component to parse links (urls, emails, etc.) in text into clickable links
+* [Typescript] - TypeScript extends JavaScript by adding types.
+* [Jest] - Jest is a delightful JavaScript Testing Framework with a focus on simplicity
+* [Enzyme] - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output.
+* [Websocket] - JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.
+* [Node.js] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+<br />
+<br />
 ## Available Scripts
 
 In the project directory, you can run:
+
+
+### `node server/server.js`
+
+Runs the server in the development mode.<br />
+To test it from different devices in the same network, change the IP in App.tsx to your own.
 
 ### `yarn start`
 
@@ -15,30 +36,24 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.<br /><br />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Known issues
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Page is not displayed perfectly on mobile because of [vh viewport problem on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) - to be fixed!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[React]: <https://reactjs.org/>
+[React-Linkify]: <https://github.com/tasti/react-linkify>
+[Jest]: <https://jestjs.io/>
+[Enzyme]: <https://enzymejs.github.io/enzyme/>
+[Typescript]: <https://www.typescriptlang.org/>
+[Websocket]: <https://www.npmjs.com/package/websocket>
+[Node.js]: <https://nodejs.org/en/about/>
