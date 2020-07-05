@@ -1,4 +1,8 @@
+@import "../../variables";
+
 .userlist {
     height: 84vh;
     background-color: white;
+    border-left: $border-style-tabs;
+    border-right: $border-style-tabs;
 }

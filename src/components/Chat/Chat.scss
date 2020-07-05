@@ -1,12 +1,19 @@
+@import "../../variables";
+
 .chatWindow {
     height: 84vh;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    border-left: $border-style-tabs;
+    border-right: $border-style-tabs;
+
     .chatMessages {
         flex:1;
         overflow-y: auto;
+        width: 97%;
+        margin-top: 20px;
         .message {
             margin-top: 3vh;
             margin-left: calc(3% + 5px);
@@ -35,20 +42,21 @@
             }
         }
     }
+
     .chatInput {
         height: 8vh;
-        display: table;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         form {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
+            width: 94%;
             position: relative;
             input {
                 border-radius: 5px;
                 border: 1px solid #a3a3a3;
                 font-size: 1.2em;
                 height: 5vh;
-                width: 94%;
+                width: 100%;
                 box-sizing: border-box;
                 padding-left: 12px;
                 padding-right: 35px;
@@ -58,7 +66,7 @@
                 font-size: 18px;
                 color: #a3a3a3;
                 top: calc(50% - 11px);
-                right: calc(3% + 11px);
+                right: 11px;
             }
         }
     }
