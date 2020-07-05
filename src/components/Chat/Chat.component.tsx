@@ -52,7 +52,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
         }
     }
 
-    const typeInEditMessage = (messageid: String, messagetext: String) => {
+    const switchToEditMode = (messageid: String, messagetext: String) => {
         setmessageidtoedit(messageid);
         setoriginalmessage(messagetext);
         setmessage(messagetext as string);
@@ -71,9 +71,8 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
         <div className="chatWindow">
             <div ref={scrollArea} className="chatMessages">
                 {
-                    messages.map((message, i) => <Message key={i} message={message} typeInEditMessage={typeInEditMessage} {...PropsFromParent} />)
+                    messages.map((message, i) => <Message key={i} message={message} switchToEditMode={switchToEditMode} {...PropsFromParent} />)
                 }
-
             </div>
             <div className="chatInput">
                 <form onSubmit={handleSubmit}>

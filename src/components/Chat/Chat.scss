@@ -15,6 +15,24 @@
                 text-decoration: none;
                 color:#098aed;
             }
+            .sender {
+                color: #00002c; 
+                font-weight: 500;
+            } 
+            .info {
+                color: #9da2aa;
+                margin-left: 10px;
+            }
+            .option {
+                color: #9da2aa;
+                float: right; 
+                margin-right: 10px; 
+                cursor: pointer;
+            }
+            .deleted {
+                color: #9da2aa; 
+                font-weight: 500;
+            }
         }
     }
     .chatInput {
