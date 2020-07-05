@@ -24,6 +24,7 @@
             display: table-cell;
             vertical-align: middle;
             text-align: center;
+            position: relative;
             input {
                 border-radius: 5px;
                 border: 1px solid #a3a3a3;
@@ -32,6 +33,13 @@
                 width: 94vw;
                 box-sizing: border-box;
                 padding: 12px;
+            }
+            span {
+                position: absolute;
+                font-size: 18px;
+                color: #a3a3a3;
+                top: calc(50% - 11px);
+                right: 30px;
             }
         }
     }

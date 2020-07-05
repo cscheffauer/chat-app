@@ -45,7 +45,7 @@ const Message = ({ typeInEditMessage, deleteMessage, message, userid }: Props) =
 
                         </p>
                         <Linkify>
-                            <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? 'grey' : 'black' }}>{message.text}</p>
+                            <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? '#a3a3a3' : 'black' }}>{message.text}</p>
                         </Linkify>
                     </>
             }

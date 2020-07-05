@@ -48,7 +48,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
         event.preventDefault();
         if (message.length > 0) {
             editMessage(messageidtoedit, message);
-            setmessage("");
+            cancelEditMode();
         }
     }
     const typeInEditMessage = (messageid: String, messagetext: String) => {
@@ -78,6 +78,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
             <div className="chatInput">
                 <form onSubmit={editmode ? handleSubmitEdit : handleSubmit}>
                     <input ref={messageInput} placeholder={"Message"} onChange={handleChange} onBlur={cancelEditMode} value={message} type="text"></input>
+                    {editmode && <span>✎</span>}
                 </form>
             </div>
         </div>
