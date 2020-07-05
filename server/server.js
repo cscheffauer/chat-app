@@ -58,12 +58,14 @@ const buildJson = (dataFromClient, userID) => {
     case typesDef.EDIT_MESSAGE_EVENT:
       var foundIndex = messages.findIndex(message => message.messageid == dataFromClient.id)
       messages[foundIndex].text = dataFromClient.text;
-      messages[foundIndex] = { state: "EDITED", ...messages[foundIndex] };
+      messages[foundIndex].state = "EDITED";
+      messages[foundIndex] = { ...messages[foundIndex] };
       json.data = { messages, userActivity };
       break;
     case typesDef.DELETE_MESSAGE_EVENT:
       var foundIndex = messages.findIndex(message => message.messageid == dataFromClient.id)
-      messages[foundIndex] = { state: "DELETED", ...messages[foundIndex] };
+      messages[foundIndex].state = "DELETED";
+      messages[foundIndex] = { ...messages[foundIndex] };
       json.data = { messages, userActivity };
       break;
   }
