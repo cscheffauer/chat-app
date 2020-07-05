@@ -44,11 +44,6 @@ Builds the app for production to the `build` folder.<br /><br />
 
 
 
-## Known issues
-
-* Page is not displayed perfectly on mobile because of [vh viewport problem on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) - to be fixed!
-
-
 
 
 [React]: <https://reactjs.org/>

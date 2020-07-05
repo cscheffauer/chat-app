@@ -1,5 +1,6 @@
 .header {
-    height: 8vh;
+    height: 8vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 8);
     width: 100%;
     display: flex;
     align-items: center;
