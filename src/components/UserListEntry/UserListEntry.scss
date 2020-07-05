@@ -1,8 +1,10 @@
+@import "../../variables";
+
 .userlistentry {
     width: 100%;
     height: 8vh;
     display: table;
-    border-bottom: 1px solid #d1d1d1;
+    border-bottom: $border-style-tabs;
     p {
         display: table-cell;
         vertical-align: middle;

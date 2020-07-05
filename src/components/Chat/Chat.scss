@@ -2,7 +2,7 @@
 
 .chatWindow {
     height: 84vh;
-    background-color: white;
+    background-color: $color-chat-window;
     display: flex;
     flex-direction: column;
     align-content: space-between;
@@ -20,24 +20,24 @@
             margin-right: 1%;
             a {
                 text-decoration: none;
-                color:#098aed;
+                color: $color-message-link;
             }
             .sender {
-                color: #00002c; 
+                color: $color-message-sender; 
                 font-weight: 500;
             } 
             .info {
-                color: #9da2aa;
+                color: $color-grey;
                 margin-left: 10px;
             }
             .option {
-                color: #9da2aa;
+                color: $color-grey;
                 float: right; 
                 margin-right: 10px; 
                 cursor: pointer;
             }
             .deleted {
-                color: #9da2aa; 
+                color: $color-grey; 
                 font-weight: 500;
             }
         }
@@ -53,7 +53,7 @@
             position: relative;
             input {
                 border-radius: 5px;
-                border: 1px solid #a3a3a3;
+                border: 1px solid $color-light-grey;
                 font-size: 1.2em;
                 height: 5vh;
                 width: 100%;
@@ -64,7 +64,7 @@
             span {
                 position: absolute;
                 font-size: 18px;
-                color: #a3a3a3;
+                color: $color-grey;
                 top: calc(50% - 11px);
                 right: 11px;
             }

@@ -1,7 +1,9 @@
+@import "./variables";
+
 body {
   margin: 0;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif, Arial;
-  background-color: #ebebeb;
+  background-color: $color-page-background;
 }
 p{
   display: block;

@@ -14,7 +14,7 @@
         border-bottom: $border-style-tabs;
     }
     .selected {
-        background-color: white;
+        background-color: $color-chat-window;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         border-top: $border-style-tabs;
