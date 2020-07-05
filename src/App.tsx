@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-import './App.scss';
+import './index.scss';
 import Homepage from './containers/Homepage/Homepage.component';
 import Header from './components/Header/Header.component';
 
