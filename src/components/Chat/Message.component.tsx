@@ -4,7 +4,7 @@ import './Chat.scss';
 import { MessageType } from '../../models/chat.model'
 
 interface Props {
-    typeInEditMessage: (messageid: String) => void,
+    typeInEditMessage: (messageid: String, messagetext: String) => void,
     deleteMessage: (messageid: String) => void,
     message: MessageType
     userid: String
@@ -34,7 +34,7 @@ const Message = ({ typeInEditMessage, deleteMessage, message, userid }: Props) =
                                 (message.username !== "Meetingbot" && message.userid === userid) ?      //display edit and delete if message is not from the bot and the username is the same
                                     <>
                                         <span onClick={() => deleteMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 20, cursor: 'pointer' }}>×</span>
-                                        <span onClick={() => typeInEditMessage(message.messageid)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
+                                        <span onClick={() => typeInEditMessage(message.messageid, message.text)} style={{ color: "#9da2aa", float: 'right', marginRight: 10, cursor: 'pointer' }}>edit</span>
                                     </>
                                     :
                                     <></>

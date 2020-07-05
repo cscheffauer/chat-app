@@ -7,14 +7,17 @@ import { MessageType } from '../../models/chat.model'
 
 interface Props {
     sendMessage: (message: String) => void,
-    editMessage: any,
+    editMessage: (messageid: String, text: String) => void,
     deleteMessage: (messageid: String) => void,
     messages: Array<MessageType>,
     userid: String,
 }
 
 const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props) => {
-    const [message, setmessage] = useState("")
+    const [message, setmessage] = useState("");
+    const [editmode, seteditmode] = useState(false);
+    const [messageidtoedit, setmessageidtoedit] = useState("" as String);
+
     const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
     const scrollArea = useRef<HTMLDivElement>(null);        //ref for scrollArea
 
@@ -26,6 +29,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
             scrollArea.current.scrollTop = scrollArea.current.scrollHeight;     //to scroll to the bottom after messages changed
         }
     }, [messages]);
+
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -40,9 +44,28 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
         }
     }
 
-    const typeInEditMessage = (messageid: String) => {
-
+    const handleSubmitEdit = (event: FormEvent | KeyboardEvent) => {
+        event.preventDefault();
+        if (message.length > 0) {
+            editMessage(messageidtoedit, message);
+            setmessage("");
+        }
     }
+    const typeInEditMessage = (messageid: String, messagetext: String) => {
+        seteditmode(true);
+        setmessageidtoedit(messageid);
+        setmessage(messagetext as string);
+
+        if (messageInput.current !== null) {
+            messageInput.current.focus();           //focus on the messageInput to edit the message
+        }
+    }
+
+    const cancelEditMode = () => {
+        seteditmode(false);
+        setmessage("");
+    }
+
 
     return (
         <div className="chatWindow">
@@ -53,8 +76,8 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
 
             </div>
             <div className="chatInput">
-                <form onSubmit={handleSubmit}>
-                    <input ref={messageInput} placeholder={"Message"} onChange={handleChange} value={message} type="text"></input>
+                <form onSubmit={editmode ? handleSubmitEdit : handleSubmit}>
+                    <input ref={messageInput} placeholder={"Message"} onChange={handleChange} onBlur={cancelEditMode} value={message} type="text"></input>
                 </form>
             </div>
         </div>

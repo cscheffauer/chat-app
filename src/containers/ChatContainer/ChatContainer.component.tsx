@@ -50,15 +50,15 @@ const ChatContainer = ({ client, username }: Props) => {
     }
 
     const editMessage = (messageid: String, text: String) => {
-        const messageJson = { messageid, text }
+        console.log(messageid, text);
         client.send(JSON.stringify({
-            message: messageJson,
+            id: messageid,
+            text: text,
             type: "editmessageevent"
         }));
     }
 
     const deleteMessage = (messageid: String) => {
-        console.log(messageid);
         client.send(JSON.stringify({
             id: messageid,
             type: "deletemessageevent"
