@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component / Header expect to render LogIn component 1`] = `
+exports[`Component / Header expect to render Header component 1`] = `
 <div
   className="header"
 >

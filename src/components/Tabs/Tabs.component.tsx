@@ -9,11 +9,11 @@ interface Props {
     participantNumber: Number
 }
 
-const Tabs = ({ setselected, selected, participantNumber }: Props) => {
+const Tabs = ({ participantNumber, ...additionalProps }: Props) => {
     return (
         <div className="tabs">
-            <Tab tabIndex={1} tabName={"Participants (" + participantNumber + ")"} setselected={setselected} selected={selected} />
-            <Tab tabIndex={2} tabName={"Chat"} setselected={setselected} selected={selected} />
+            <Tab tabIndex={1} tabName={"Participants (" + participantNumber + ")"} {...additionalProps} />
+            <Tab tabIndex={2} tabName={"Chat"} {...additionalProps} />
         </div>
     )
 }

@@ -4,10 +4,9 @@ import Header from './Header.component';
 
 
 describe('Component / Header', () => {
-    const HeaderMock = () => { };
     const HeaderWrapper = shallow(<Header />);
 
-    it('expect to render LogIn component', () => {
+    it('expect to render Header component', () => {
         expect(HeaderWrapper).toMatchSnapshot();
     })
 

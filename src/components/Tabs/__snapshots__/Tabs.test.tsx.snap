@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component / Tabs expect to render Tabs component 1`] = `
+<Tabs
+  participantNumber={8}
+  selected={2}
+  setselected={[Function]}
+>
+  <div
+    className="tabs"
+  >
+    <Tab
+      selected={2}
+      setselected={[Function]}
+      tabIndex={1}
+      tabName="Participants (8)"
+    >
+      <div
+        className="tab "
+        onClick={[Function]}
+      >
+        <p>
+          Participants (8)
+        </p>
+      </div>
+    </Tab>
+    <Tab
+      selected={2}
+      setselected={[Function]}
+      tabIndex={2}
+      tabName="Chat"
+    >
+      <div
+        className="tab selected"
+        onClick={[Function]}
+      >
+        <p>
+          Chat
+        </p>
+      </div>
+    </Tab>
+  </div>
+</Tabs>
+`;
