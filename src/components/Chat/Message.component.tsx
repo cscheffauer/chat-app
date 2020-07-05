@@ -10,7 +10,6 @@ interface Props {
     userid: String
 }
 
-
 const Message = ({ switchToEditMode, deleteMessage, message, userid }: Props) => {
     const sentDate = new Date(message.sent);
     const minutes = sentDate.getMinutes() < 10 ? "0" + sentDate.getMinutes() : sentDate.getMinutes()

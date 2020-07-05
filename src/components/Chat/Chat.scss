@@ -9,8 +9,8 @@
         overflow-y: auto;
         .message {
             margin-top: 3vh;
-            margin-left: 3vh;
-            margin-right: 2vh;
+            margin-left: calc(3% + 5px);
+            margin-right: 1%;
             a {
                 text-decoration: none;
                 color:#098aed;
@@ -48,7 +48,7 @@
                 border: 1px solid #a3a3a3;
                 font-size: 1.2em;
                 height: 5vh;
-                width: 94vw;
+                width: 94%;
                 box-sizing: border-box;
                 padding-left: 12px;
                 padding-right: 35px;
@@ -58,7 +58,7 @@
                 font-size: 18px;
                 color: #a3a3a3;
                 top: calc(50% - 11px);
-                right: 30px;
+                right: calc(3% + 11px);
             }
         }
     }
