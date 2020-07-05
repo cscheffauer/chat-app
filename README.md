@@ -15,6 +15,7 @@ This Chat App uses a number of open source projects to work properly:
 * [Node.js] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
 <br />
 <br />
+
 ## Available Scripts
 
 In the project directory, you can run:
