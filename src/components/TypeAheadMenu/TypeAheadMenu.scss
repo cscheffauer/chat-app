@@ -1,0 +1,27 @@
+@import "../../variables";
+
+.typeaheadmenu {
+    width: calc( 94% - 2px);
+    position: absolute;
+    bottom: 6.5vh;
+    background-color: $color-chat-window;
+    padding: 0 3%;
+
+    p {
+        margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    }
+    .menuitem {
+        font-size: 1.2em;
+        padding: 1em 12px;
+        border-top: $border-style-tabs;
+        :hover {
+            background-color: $color-grey;
+        }
+    }
+    .selected {
+        background-color: $color-grey;
+    }
+}

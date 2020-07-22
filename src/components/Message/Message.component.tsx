@@ -1,7 +1,9 @@
 import React from 'react';
 import Linkify from 'react-linkify';
-import './Chat.scss';
+import './Message.scss';
 import { MessageType } from '../../models/chat.model'
+import LinkPreview from '../LinkPreview/LinkPreview.component';
+
 
 interface Props {
     switchToEditMode: (messageid: String, messagetext: String) => void,
@@ -37,9 +39,11 @@ const Message = ({ switchToEditMode, deleteMessage, message, userid }: Props) =>
                                 </>
                             }
                         </p>
-                        <Linkify>
-                            <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? '#a3a3a3' : 'black' }}>{message.text}</p>
-                        </Linkify>
+                        <LinkPreview>
+                            <Linkify>
+                                <p style={{ lineHeight: '150%', color: message.username === "Meetingbot" ? '#a3a3a3' : 'black' }}>{message.text}</p>
+                            </Linkify>
+                        </LinkPreview>
                     </>
             }
         </div >

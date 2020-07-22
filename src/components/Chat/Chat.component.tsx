@@ -1,9 +1,10 @@
 import React, { FormEvent, KeyboardEvent, useState, useEffect, useRef } from 'react'
 
-import Message from './Message.component'
+import Message from '../Message/Message.component'
 import './Chat.scss';
 
 import { MessageType } from '../../models/chat.model'
+import TypeAheadMenu from '../TypeAheadMenu/TypeAheadMenu.component';
 
 interface Props {
     sendMessage: (message: String) => void,
@@ -18,6 +19,14 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
     const [editmode, seteditmode] = useState(false);
     const [messageidtoedit, setmessageidtoedit] = useState("" as String);
     const [originalmessage, setoriginalmessage] = useState('' as String);
+
+    const [typeAheadOpen, settypeAheadOpen] = useState(false);
+    const [selectedCommand, setSelectedCommand] = useState('');
+
+    const openGiphyDialog = () => {
+        alert('hi');
+    }
+    const menuItems = [{ label: 'Insert a cool giphy', selected: false, command: '/giphy', onExecute: openGiphyDialog }, { label: 'Share a great picture', selected: false, command: '/picture', onExecute: openGiphyDialog }];
 
     const messageInput = useRef<HTMLInputElement>(null);        //ref for messageInput
     const scrollArea = useRef<HTMLDivElement>(null);        //ref for scrollArea
@@ -34,11 +43,17 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
         event.preventDefault();
+        if (event.currentTarget.value.startsWith('/', 0)) {
+            settypeAheadOpen(true);
+        } else {
+            settypeAheadOpen(false);
+        }
         setmessage(event.currentTarget.value)
     }
 
     const handleSubmit = (event: FormEvent | KeyboardEvent) => {
         event.preventDefault();
+        settypeAheadOpen(false);
         if (message.length > 0) {
             if (editmode) {
                 if (originalmessage !== message) {
@@ -48,6 +63,16 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
             } else {
                 sendMessage(message);
                 setmessage("");
+            }
+        }
+    }
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            if (typeAheadOpen && selectedCommand !== '') {
+                event.preventDefault();
+                setmessage(selectedCommand);
+                settypeAheadOpen(false);
             }
         }
     }
@@ -75,8 +100,9 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
                 }
             </div>
             <div className="chatInput">
+                {typeAheadOpen && <TypeAheadMenu message={message} menuItems={menuItems} setCommand={(command) => { setSelectedCommand(command) }} />}
                 <form onSubmit={handleSubmit}>
-                    <input ref={messageInput} placeholder={"Message"} onChange={handleChange} onBlur={cancelEditMode} value={message} type="text"></input>
+                    <input ref={messageInput} placeholder={"Message"} onChange={handleChange} onKeyPress={handleKeyPress} onBlur={cancelEditMode} value={message} type="text"></input>
                     {editmode && <span>✎</span>}
                 </form>
             </div>
