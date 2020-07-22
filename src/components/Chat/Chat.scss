@@ -15,33 +15,7 @@
         overflow-y: auto;
         width: 97%;
         margin-top: 20px;
-        .message {
-            margin-top: 3vh;
-            margin-left: calc(3% + 5px);
-            margin-right: 1%;
-            a {
-                text-decoration: none;
-                color: $color-message-link;
-            }
-            .sender {
-                color: $color-message-sender; 
-                font-weight: 500;
-            } 
-            .info {
-                color: $color-grey;
-                margin-left: 10px;
-            }
-            .option {
-                color: $color-grey;
-                float: right; 
-                margin-right: 10px; 
-                cursor: pointer;
-            }
-            .deleted {
-                color: $color-grey; 
-                font-weight: 500;
-            }
-        }
+      
     }
 
     .chatInput {
