@@ -8,7 +8,6 @@ type Props = {
     client: any
 }
 
-
 const Homepage = ({ client }: Props) => {
     const [loggedIn, setloggedIn] = useState(false)
     const [username, setusername] = useState("" as String);

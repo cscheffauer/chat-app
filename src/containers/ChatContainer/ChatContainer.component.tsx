@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { MessageType } from '../../models/chat.model'
 import Chat from '../../components/Chat/Chat.component';
 import UserList from '../../components/UserList/UserList.component';
 import Tabs from '../../components/Tabs/Tabs.component'
 
-import { MessageType } from '../../models/chat.model'
+const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
+const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
+const AsyncTabs = lazy(() => import('../../components/Tabs/Tabs.component'));
 
 interface Props {
     username: String,
@@ -67,12 +70,14 @@ const ChatContainer = ({ client, username }: Props) => {
 
     return (
         <div className="chatcontainer">
-            <Tabs setselected={setselected} selected={selected} participantNumber={participantNumber} />
-            {selected === 1 ?           //if tabIndex 1 (=User List) is selected
-                <UserList userList={userList} />
-                :                       //if tabIndex 2 (=Chat) is selected
-                <Chat sendMessage={sendMessage} editMessage={editMessage} deleteMessage={deleteMessage} messages={messages} userid={userid} />
-            }
+            <Suspense fallback={< div style={{ textAlign: 'center' }} > Loading...</div >}>
+                <AsyncTabs setselected={setselected} selected={selected} participantNumber={participantNumber} />
+                {selected === 1 ?           //if tabIndex 1 (=User List) is selected
+                    <AsyncUserList userList={userList} />
+                    :                       //if tabIndex 2 (=Chat) is selected
+                    <AsyncChat sendMessage={sendMessage} editMessage={editMessage} deleteMessage={deleteMessage} messages={messages} userid={userid} />
+                }
+            </Suspense>
         </div>
     )
 }
