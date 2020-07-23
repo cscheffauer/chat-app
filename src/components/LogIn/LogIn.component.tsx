@@ -15,7 +15,7 @@ const LogIn = ({ logInUser }: Props) => {
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
-        logInUser(username)
+        if (username.length > 0) logInUser(username)
     }
     return (
         <div className="login">
