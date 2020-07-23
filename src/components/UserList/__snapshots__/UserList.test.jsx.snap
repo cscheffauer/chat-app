@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserList /> expect to render UserList component 1`] = `
+<UserList
+  userList={
+    Object {
+      "1": Object {
+        "username": "Max Mustermann",
+      },
+      "2": Object {
+        "username": "John Doe",
+      },
+    }
+  }
+>
+  <div
+    className="userlist"
+  >
+    <UserListEntry
+      key="1"
+      username="Max Mustermann"
+    >
+      <div
+        className="userlistentry"
+      >
+        <p
+          className="username"
+        >
+          Max Mustermann
+        </p>
+      </div>
+    </UserListEntry>
+    <UserListEntry
+      key="2"
+      username="John Doe"
+    >
+      <div
+        className="userlistentry"
+      >
+        <p
+          className="username"
+        >
+          John Doe
+        </p>
+      </div>
+    </UserListEntry>
+  </div>
+</UserList>
+`;
