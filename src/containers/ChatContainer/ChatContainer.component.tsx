@@ -1,8 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { MessageType } from '../../models/chat.model'
-import Chat from '../../components/Chat/Chat.component';
-import UserList from '../../components/UserList/UserList.component';
-import Tabs from '../../components/Tabs/Tabs.component'
 
 const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
 const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
