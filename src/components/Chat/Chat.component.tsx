@@ -71,7 +71,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
         <div className="chatWindow">
             <div ref={scrollArea} className="chatMessages">
                 {
-                    messages.map((message, i) => <Message key={i} message={message} switchToEditMode={switchToEditMode} {...PropsFromParent} />)
+                    messages.map((message) => <Message key={message.messageid} message={message} switchToEditMode={switchToEditMode} {...PropsFromParent} />)
                 }
             </div>
             <div className="chatInput">

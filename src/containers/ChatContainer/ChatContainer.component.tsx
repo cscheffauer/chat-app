@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { MessageType } from '../../models/chat.model'
+import UserList from '../../components/UserList/UserList.component';
 
 const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
 const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
@@ -17,7 +18,7 @@ const ChatContainer = ({ client, username }: Props) => {
     const [messages, setmessages] = useState([] as Array<MessageType>);
     const [selected, setselected] = useState(2);        //set initial tab to be shown to Chat tab (=2)
 
-    useEffect(() => {
+    useEffect(() => {           //TODO: might not be needed because userlist length can be set directly
         setparticipantNumber(Object.keys(userList).length)      //get keys of userList and set the length of it as the participant number, whenever userlist changes
     }, [userList])
 
@@ -68,7 +69,7 @@ const ChatContainer = ({ client, username }: Props) => {
     return (
         <div className="chatcontainer">
             <Suspense fallback={< div style={{ textAlign: 'center' }} > Loading...</div >}>
-                <AsyncTabs setselected={setselected} selected={selected} participantNumber={participantNumber} />
+                <AsyncTabs setselected={setselected} selected={selected} participantNumber={Object.keys(userList).length} />
                 {selected === 1 ?           //if tabIndex 1 (=User List) is selected
                     <AsyncUserList userList={userList} />
                     :                       //if tabIndex 2 (=Chat) is selected

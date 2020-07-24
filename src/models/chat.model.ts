@@ -3,6 +3,6 @@ export type MessageType = {
     username: String,
     userid: String,
     text: String,
-    messageid: String,
+    messageid: string,
     state: String,
 };

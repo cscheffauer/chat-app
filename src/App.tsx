@@ -5,12 +5,14 @@ import './index.scss';
 import Homepage from './containers/Homepage/Homepage.component';
 import Header from './components/Header/Header.component';
 
+type connectionType = 'loading' | 'error' | 'established';
+
 
 export const client = new W3CWebSocket('ws://localhost:8001');
 
 
 const App = () => {
-  const [connection, setconnection] = useState('loading');
+  const [connection, setconnection] = useState<connectionType>('loading');
 
   client.onopen = () => {
     setconnection('established');
