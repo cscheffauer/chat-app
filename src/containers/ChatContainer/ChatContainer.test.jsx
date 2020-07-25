@@ -3,18 +3,18 @@ import { mount } from 'enzyme';
 import ChatContainer from './ChatContainer.component';
 
 describe('<ChatContainer />', () => {
-    let wrapper;
+	let wrapper;
 
-    const clientMock = jest.fn();
+	const clientMock = jest.fn();
 
-    beforeEach(() => {
-        wrapper = mount(<ChatContainer client={clientMock} username={'John Doe'} />)
-    });
+	beforeEach(() => {
+		wrapper = mount(<ChatContainer client={clientMock} username={'John Doe'} />);
+	});
 
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
-    it('expect to render ChatContainer component', () => {
-        expect(wrapper).toMatchSnapshot();
-    })
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+	it('expect to render ChatContainer component', () => {
+		expect(wrapper).toMatchSnapshot();
+	});
 });

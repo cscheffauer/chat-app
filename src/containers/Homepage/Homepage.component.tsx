@@ -1,40 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import LogIn from '../../components/LogIn/LogIn.component';
 import ChatContainer from '../ChatContainer/ChatContainer.component';
 
 import './Homepage.scss';
 
 type Props = {
-    client: any
-}
+	client: any;
+};
 
 const Homepage = ({ client }: Props) => {
-    const [loggedIn, setloggedIn] = useState(false)
-    const [username, setusername] = useState("" as String);
+	const [loggedIn, setloggedIn] = useState(false);
+	const [username, setusername] = useState('' as String);
 
-    const logInUser = (username: String) => {
-        setusername(username);
-        client.send(JSON.stringify({
-            user: {
-                username
-            },
-            type: "userevent"
-        }));
+	const logInUser = (username: String) => {
+		setusername(username);
+		client.send(
+			JSON.stringify({
+				user: {
+					username,
+				},
+				type: 'userevent',
+			})
+		);
 
-        setloggedIn(true);
-    };
+		setloggedIn(true);
+	};
 
+	return <div className='homepage'>{!loggedIn ? <LogIn logInUser={logInUser} /> : <ChatContainer client={client} username={username} />}</div>;
+};
 
-    return (
-        <div className="homepage">
-            {
-                !loggedIn ?
-                    <LogIn logInUser={logInUser} />
-                    :
-                    <ChatContainer client={client} username={username} />
-            }
-        </div>
-    )
-}
-
-export default Homepage
+export default Homepage;
