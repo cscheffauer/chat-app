@@ -14,14 +14,8 @@ interface Props {
 const ChatContainer = ({ client, username }: Props) => {
 	const [userList, setuserList] = useState({});
 	const [userid, setuserid] = useState('');
-	const [participantNumber, setparticipantNumber] = useState(0);
 	const [messages, setmessages] = useState([] as Array<MessageType>);
 	const [selected, setselected] = useState(2); //set initial tab to be shown to Chat tab (=2)
-
-	useEffect(() => {
-		//TODO: might not be needed because userlist length can be set directly
-		setparticipantNumber(Object.keys(userList).length); //get keys of userList and set the length of it as the participant number, whenever userlist changes
-	}, [userList]);
 
 	client.onmessage = (incomingMessage: any) => {
 		const dataFromServer = JSON.parse(incomingMessage.data);
