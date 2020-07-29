@@ -6,8 +6,8 @@ import './Message.scss';
 import { MessageType } from '../../models/chat.model';
 
 interface Props {
-	switchToEditMode: (messageid: String, messagetext: String) => void;
-	deleteMessage: (messageid: String) => void;
+	switchToEditMode: (messageid: string, messagetext: string) => void;
+	deleteMessage: (messageid: string) => void;
 	message: MessageType;
 }
 

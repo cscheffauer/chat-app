@@ -10,39 +10,10 @@
 	border-left: $border-style-tabs;
 	border-right: $border-style-tabs;
 
-    .chatMessages {
-        flex:1;
-        overflow-y: auto;
-        width: 97%;
-        margin-top: 20px;
-      
-    }
-
-	.chatInput {
-		height: 8vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		form {
-			width: 94%;
-			position: relative;
-			input {
-				border-radius: 5px;
-				border: 1px solid $color-light-grey;
-				font-size: 1.2em;
-				height: 5vh;
-				width: 100%;
-				box-sizing: border-box;
-				padding-left: 12px;
-				padding-right: 35px;
-			}
-			span {
-				position: absolute;
-				font-size: 18px;
-				color: $color-grey;
-				top: calc(50% - 11px);
-				right: 11px;
-			}
-		}
+	.chatMessages {
+		flex: 1;
+		overflow-y: auto;
+		width: 97%;
+		margin-top: 20px;
 	}
 }

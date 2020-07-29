@@ -1,8 +1,8 @@
 export type MessageType = {
 	sent: Date;
-	username: String;
-	userid: String;
-	text: String;
+	username: string;
+	userid: string;
+	text: string;
 	messageid: string;
-	state: String;
+	state: string;
 };
