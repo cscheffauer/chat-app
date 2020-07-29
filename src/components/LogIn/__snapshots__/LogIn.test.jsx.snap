@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LogIn /> expect to render LogIn component 1`] = `
+<LogIn
+  logInUser={[MockFunction]}
+>
+  <div
+    className="login"
+  >
+    <p>
+      Please type in your name to join:
+    </p>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+      />
+      <button
+        type="submit"
+      >
+        Join
+      </button>
+    </form>
+  </div>
+</LogIn>
+`;

@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chat /> expect to render Chat component 1`] = `
+<Chat
+  deleteMessage={[MockFunction]}
+  editMessage={[MockFunction]}
+  messages={
+    Array [
+      Object {
+        "messageid": "1",
+        "sent": 2020-01-01T00:00:00.000Z,
+        "state": "",
+        "text": "Hallo",
+        "userid": "1",
+        "username": "Max",
+      },
+      Object {
+        "messageid": "2",
+        "sent": 2020-01-01T00:00:00.000Z,
+        "state": "DELETED",
+        "text": "Hi",
+        "userid": "2",
+        "username": "John",
+      },
+      Object {
+        "messageid": "3",
+        "sent": 2020-01-01T00:00:00.000Z,
+        "state": "EDITED",
+        "text": "What's up?",
+        "userid": "3",
+        "username": "Jeffrey",
+      },
+    ]
+  }
+  sendMessage={[MockFunction]}
+  userid="1234"
+>
+  <div
+    className="chatWindow"
+  >
+    <div
+      className="chatMessages"
+    >
+      <Message
+        deleteMessage={[MockFunction]}
+        key="0"
+        message={
+          Object {
+            "messageid": "1",
+            "sent": 2020-01-01T00:00:00.000Z,
+            "state": "",
+            "text": "Hallo",
+            "userid": "1",
+            "username": "Max",
+          }
+        }
+        switchToEditMode={[Function]}
+        userid="1234"
+      >
+        <div
+          className="message"
+        >
+          <p>
+            <span
+              className="sender"
+            >
+              Max
+            </span>
+            <span
+              className="info"
+            >
+              01:00
+            </span>
+          </p>
+          <Linkify
+            componentDecorator={[Function]}
+            hrefDecorator={[Function]}
+            matchDecorator={[Function]}
+            textDecorator={[Function]}
+          >
+            <p
+              key="0"
+              style={
+                Object {
+                  "color": "black",
+                  "lineHeight": "150%",
+                }
+              }
+            >
+              Hallo
+            </p>
+          </Linkify>
+        </div>
+      </Message>
+      <Message
+        deleteMessage={[MockFunction]}
+        key="1"
+        message={
+          Object {
+            "messageid": "2",
+            "sent": 2020-01-01T00:00:00.000Z,
+            "state": "DELETED",
+            "text": "Hi",
+            "userid": "2",
+            "username": "John",
+          }
+        }
+        switchToEditMode={[Function]}
+        userid="1234"
+      >
+        <div
+          className="message"
+        >
+          <p
+            className="deleted"
+          >
+            Message has been deleted by 
+            John
+          </p>
+        </div>
+      </Message>
+      <Message
+        deleteMessage={[MockFunction]}
+        key="2"
+        message={
+          Object {
+            "messageid": "3",
+            "sent": 2020-01-01T00:00:00.000Z,
+            "state": "EDITED",
+            "text": "What's up?",
+            "userid": "3",
+            "username": "Jeffrey",
+          }
+        }
+        switchToEditMode={[Function]}
+        userid="1234"
+      >
+        <div
+          className="message"
+        >
+          <p>
+            <span
+              className="sender"
+            >
+              Jeffrey
+            </span>
+            <span
+              className="info"
+            >
+              01:00
+            </span>
+            <span
+              className="info"
+            >
+              | edited
+            </span>
+          </p>
+          <Linkify
+            componentDecorator={[Function]}
+            hrefDecorator={[Function]}
+            matchDecorator={[Function]}
+            textDecorator={[Function]}
+          >
+            <p
+              key="0"
+              style={
+                Object {
+                  "color": "black",
+                  "lineHeight": "150%",
+                }
+              }
+            >
+              What's up?
+            </p>
+          </Linkify>
+        </div>
+      </Message>
+    </div>
+    <div
+      className="chatInput"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Message"
+          type="text"
+          value=""
+        />
+      </form>
+    </div>
+  </div>
+</Chat>
+`;

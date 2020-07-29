@@ -1,25 +1,24 @@
 # Chat App
- 
+
 After login with your username you can easily send, edit and delete messages and see what your colleagues have written. <br />In the participants tab you can see a list of currently connected users.
 
 ## Tech
 
 This Chat App uses a number of open source projects to work properly:
 
-* [React] - a JS library for building user interfaces!
-* [React-Linkify] - React component to parse links (urls, emails, etc.) in text into clickable links
-* [Typescript] - TypeScript extends JavaScript by adding types.
-* [Jest] - Jest is a delightful JavaScript Testing Framework with a focus on simplicity
-* [Enzyme] - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output.
-* [Websocket] - JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.
-* [Node.js] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
-<br />
-<br />
+- [React] - a JS library for building user interfaces!
+- [React-Linkify] - React component to parse links (urls, emails, etc.) in text into clickable links
+- [Typescript] - TypeScript extends JavaScript by adding types.
+- [Jest] - Jest is a delightful JavaScript Testing Framework with a focus on simplicity
+- [Enzyme] - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output.
+- [Websocket] - JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.
+- [Node.js] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+  <br />
+  <br />
 
 ## Available Scripts
 
 In the project directory, you can run:
-
 
 ### `node server/server.js`
 
@@ -42,14 +41,10 @@ Launches the test runner in the interactive watch mode.<br />
 
 Builds the app for production to the `build` folder.<br /><br />
 
-
-
-
-
-[React]: <https://reactjs.org/>
-[React-Linkify]: <https://github.com/tasti/react-linkify>
-[Jest]: <https://jestjs.io/>
-[Enzyme]: <https://enzymejs.github.io/enzyme/>
-[Typescript]: <https://www.typescriptlang.org/>
-[Websocket]: <https://www.npmjs.com/package/websocket>
-[Node.js]: <https://nodejs.org/en/about/>
+[react]: https://reactjs.org/
+[react-linkify]: https://github.com/tasti/react-linkify
+[jest]: https://jestjs.io/
+[enzyme]: https://enzymejs.github.io/enzyme/
+[typescript]: https://www.typescriptlang.org/
+[websocket]: https://www.npmjs.com/package/websocket
+[node.js]: https://nodejs.org/en/about/

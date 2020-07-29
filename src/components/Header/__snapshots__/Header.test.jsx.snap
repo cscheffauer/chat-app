@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> expect to render Header component 1`] = `
+<Header>
+  <div
+    className="header"
+  >
+    <p>
+      Status Meeting Standup
+    </p>
+  </div>
+</Header>
+`;

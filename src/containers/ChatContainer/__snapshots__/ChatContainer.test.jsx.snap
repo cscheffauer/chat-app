@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatContainer /> expect to render ChatContainer component 1`] = `
+<ChatContainer
+  client={[MockFunction]}
+  username="John Doe"
+>
+  <div
+    className="chatcontainer"
+  >
+    <Suspense
+      fallback={
+        <div
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+           Loading...
+        </div>
+      }
+    >
+      <div
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+         Loading...
+      </div>
+    </Suspense>
+  </div>
+</ChatContainer>
+`;

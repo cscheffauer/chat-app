@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message /> expect to render Chat component 1`] = `
+<Message
+  deleteMessage={[MockFunction]}
+  message={
+    Object {
+      "messageid": "4321",
+      "sent": 2020-01-01T00:00:00.000Z,
+      "state": "",
+      "text": "Hallo",
+      "userid": "1234",
+      "username": "Max",
+    }
+  }
+  switchToEditMode={[MockFunction]}
+  userid="1234"
+>
+  <div
+    className="message"
+  >
+    <p>
+      <span
+        className="sender"
+      >
+        Max
+      </span>
+      <span
+        className="info"
+      >
+        01:00
+      </span>
+      <span
+        className="option"
+        onClick={[Function]}
+      >
+        ×
+      </span>
+      <span
+        className="option"
+        onClick={[Function]}
+      >
+        ✎
+      </span>
+    </p>
+    <Linkify
+      componentDecorator={[Function]}
+      hrefDecorator={[Function]}
+      matchDecorator={[Function]}
+      textDecorator={[Function]}
+    >
+      <p
+        key="0"
+        style={
+          Object {
+            "color": "black",
+            "lineHeight": "150%",
+          }
+        }
+      >
+        Hallo
+      </p>
+    </Linkify>
+  </div>
+</Message>
+`;

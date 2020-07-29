@@ -1,19 +1,19 @@
-@import "./variables";
+@import './variables';
 
 body {
-  margin: 0;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif, Arial;
-  background-color: $color-page-background;
+	margin: 0;
+	font-family: 'Open Sans', 'Helvetica Neue', sans-serif, Arial;
+	background-color: $color-page-background;
 }
-p{
-  display: block;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+p {
+	display: block;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
 }
 
 .errorboundary {
-  text-align: center;
-  font-size: 18px;
+	text-align: center;
+	font-size: 18px;
 }

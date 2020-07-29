@@ -1,15 +1,16 @@
-@import "../../variables";
+@import '../../variables';
 
 .chatWindow {
-    height: 84vh; /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 84);
-    background-color: $color-chat-window;
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    border-left: $border-style-tabs;
-    border-right: $border-style-tabs;
+	height: 84vh; /* Fallback for browsers that do not support Custom Properties */
+	height: calc(var(--vh, 1vh) * 84);
+	background-color: $color-chat-window;
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	border-left: $border-style-tabs;
+	border-right: $border-style-tabs;
 
+<<<<<<< HEAD
     .chatMessages {
         flex:1;
         overflow-y: auto;
@@ -17,32 +18,67 @@
         margin-top: 20px;
       
     }
+=======
+	.chatMessages {
+		flex: 1;
+		overflow-y: auto;
+		width: 97%;
+		margin-top: 20px;
+		.message {
+			margin-top: 3vh;
+			margin-left: calc(3% + 5px);
+			margin-right: 1%;
+			a {
+				text-decoration: none;
+				color: $color-message-link;
+			}
+			.sender {
+				color: $color-message-sender;
+				font-weight: 500;
+			}
+			.info {
+				color: $color-grey;
+				margin-left: 10px;
+			}
+			.option {
+				color: $color-grey;
+				float: right;
+				margin-right: 10px;
+				cursor: pointer;
+			}
+			.deleted {
+				color: $color-grey;
+				font-weight: 500;
+			}
+		}
+	}
+>>>>>>> daeb8956aa5276d5731146bf3a0073c04f88f4c7
 
-    .chatInput {
-        height: 8vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        form {
-            width: 94%;
-            position: relative;
-            input {
-                border-radius: 5px;
-                border: 1px solid $color-light-grey;
-                font-size: 1.2em;
-                height: 5vh;
-                width: 100%;
-                box-sizing: border-box;
-                padding-left: 12px;
-                padding-right: 35px;
-            }
-            span {
-                position: absolute;
-                font-size: 18px;
-                color: $color-grey;
-                top: calc(50% - 11px);
-                right: 11px;
-            }
-        }
-    }
+	.chatInput {
+		height: 8vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		form {
+			width: 94%;
+			position: relative;
+			input {
+				border-radius: 5px;
+				border: 1px solid $color-light-grey;
+				font-size: 1.2em;
+				height: 5vh;
+				width: 100%;
+				box-sizing: border-box;
+				padding-left: 12px;
+				padding-right: 35px;
+			}
+			span {
+				position: absolute;
+				font-size: 18px;
+				color: $color-grey;
+				top: calc(50% - 11px);
+				right: 11px;
+			}
+		}
+	}
 }

@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component / Tabs expect to render Tabs component 1`] = `
+exports[`<Tabs /> expect to render Tabs component 1`] = `
 <Tabs
   participantNumber={8}
   selected={2}
-  setselected={[Function]}
+  setselected={[MockFunction]}
 >
   <div
     className="tabs"
   >
     <Tab
       selected={2}
-      setselected={[Function]}
+      setselected={[MockFunction]}
       tabIndex={1}
       tabName="Participants (8)"
     >
@@ -26,7 +26,7 @@ exports[`Component / Tabs expect to render Tabs component 1`] = `
     </Tab>
     <Tab
       selected={2}
-      setselected={[Function]}
+      setselected={[MockFunction]}
       tabIndex={2}
       tabName="Chat"
     >

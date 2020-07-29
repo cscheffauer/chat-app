@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserListEntry /> expect to render UserListEntry component 1`] = `
+<UserListEntry
+  username="Max Mustermann"
+>
+  <div
+    className="userlistentry"
+  >
+    <p
+      className="username"
+    >
+      Max Mustermann
+    </p>
+  </div>
+</UserListEntry>
+`;
