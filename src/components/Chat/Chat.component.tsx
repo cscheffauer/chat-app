@@ -1,10 +1,6 @@
 import React, { FormEvent, KeyboardEvent, useState, useEffect, useRef } from 'react';
 
-<<<<<<< HEAD
-import Message from '../Message/Message.component'
-=======
-import Message from './Message.component';
->>>>>>> daeb8956aa5276d5731146bf3a0073c04f88f4c7
+import Message from '../Message/Message.component';
 import './Chat.scss';
 
 import { MessageType } from '../../models/chat.model';

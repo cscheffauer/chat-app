@@ -1,12 +1,7 @@
 import React from 'react';
 import Linkify from 'react-linkify';
-<<<<<<< HEAD:src/components/Message/Message.component.tsx
 import './Message.scss';
-import { MessageType } from '../../models/chat.model'
-=======
-import './Chat.scss';
 import { MessageType } from '../../models/chat.model';
->>>>>>> daeb8956aa5276d5731146bf3a0073c04f88f4c7:src/components/Chat/Message.component.tsx
 
 interface Props {
 	switchToEditMode: (messageid: String, messagetext: String) => void;
