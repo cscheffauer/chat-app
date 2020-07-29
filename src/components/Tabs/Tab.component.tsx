@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface Props {
-	tabIndex: Number;
-	tabName: String;
+	tabIndex: string;
+	tabName: string;
 	setselected: any;
-	selected: Number;
+	selected: string;
 }
 
 const Tab = ({ tabIndex, tabName, setselected, selected }: Props) => {

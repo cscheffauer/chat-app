@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { w3cwebsocket as W3CWebSocket } from 'websocket';
+import { AppContext } from './AppContextProvider';
 
 import './index.scss';
 import Homepage from './containers/Homepage/Homepage.component';
@@ -7,27 +7,28 @@ import Header from './components/Header/Header.component';
 
 type connectionType = 'loading' | 'error' | 'established';
 
-export const client = new W3CWebSocket('ws://localhost:8001');
-
 const App = () => {
+	const { client } = React.useContext(AppContext);
 	const [connection, setconnection] = useState<connectionType>('loading');
 
-	client.onopen = () => {
-		setconnection('established');
-		console.log('WebSocket Client Connected');
-	};
+	if (client !== null) {
+		client.onopen = () => {
+			setconnection('established');
+			console.log('WebSocket Client Connected');
+		};
 
-	client.onerror = () => {
-		setconnection('error');
-		console.log("Can't connect to Websocket Server.");
-	};
+		client.onerror = () => {
+			setconnection('error');
+			console.log("Can't connect to Websocket Server.");
+		};
+	}
 
 	const renderConnectionSwitch = () => {
 		switch (connection) {
 			case 'loading':
 				return <p>Loading...</p>;
 			case 'established':
-				return <Homepage client={client} />;
+				return <Homepage />;
 			case 'error':
 				return (
 					<div className='errorboundary'>

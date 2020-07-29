@@ -1,4 +1,5 @@
 import React, { FormEvent, KeyboardEvent, useState, useEffect, useRef } from 'react';
+import { AppContext } from '../../AppContextProvider';
 
 import Message from '../Message/Message.component';
 import './Chat.scss';
@@ -6,14 +7,13 @@ import './Chat.scss';
 import { MessageType } from '../../models/chat.model';
 
 interface Props {
-	sendMessage: (message: String) => void;
-	editMessage: (messageid: String, text: String) => void;
-	deleteMessage: (messageid: String) => void;
+	send: (json: Object) => void;
 	messages: Array<MessageType>;
-	userid: String;
+	username: string;
 }
 
-const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props) => {
+const Chat = ({ send, messages, username }: Props) => {
+	const { userid } = React.useContext(AppContext);
 	const [message, setmessage] = useState('');
 	const [editmode, seteditmode] = useState(false);
 	const [messageidtoedit, setmessageidtoedit] = useState('' as String);
@@ -21,6 +21,21 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
 
 	const messageInput = useRef<HTMLInputElement>(null); //ref for messageInput
 	const scrollArea = useRef<HTMLDivElement>(null); //ref for scrollArea
+
+	const sendMessage = (text: String) => {
+		const sent = new Date();
+		const messageJson = { text, username, userid, sent };
+		send({ message: messageJson, type: 'newmessageevent' });
+	};
+
+	const editMessage = (messageid: String, text: String) => {
+		console.log(messageid, text);
+		send({ id: messageid, text: text, type: 'editmessageevent' });
+	};
+
+	const deleteMessage = (messageid: String) => {
+		send({ id: messageid, type: 'deletemessageevent' });
+	};
 
 	useEffect(() => {
 		if (messageInput.current !== null) {
@@ -70,7 +85,7 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
 		<div className='chatWindow'>
 			<div ref={scrollArea} className='chatMessages'>
 				{messages.map((message) => (
-					<Message key={message.messageid} message={message} switchToEditMode={switchToEditMode} {...PropsFromParent} />
+					<Message key={message.messageid} message={message} switchToEditMode={switchToEditMode} deleteMessage={deleteMessage} />
 				))}
 			</div>
 			<div className='chatInput'>

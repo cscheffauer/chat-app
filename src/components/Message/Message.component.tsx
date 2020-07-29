@@ -1,4 +1,6 @@
 import React from 'react';
+import { AppContext } from '../../AppContextProvider';
+
 import Linkify from 'react-linkify';
 import './Message.scss';
 import { MessageType } from '../../models/chat.model';
@@ -7,10 +9,10 @@ interface Props {
 	switchToEditMode: (messageid: String, messagetext: String) => void;
 	deleteMessage: (messageid: String) => void;
 	message: MessageType;
-	userid: String;
 }
 
-const Message = ({ switchToEditMode, deleteMessage, message, userid }: Props) => {
+const Message = ({ switchToEditMode, deleteMessage, message }: Props) => {
+	const { userid } = React.useContext(AppContext);
 	const sentDate = new Date(message.sent);
 	const minutes = sentDate.getMinutes() < 10 ? '0' + sentDate.getMinutes() : sentDate.getMinutes();
 	const hours = sentDate.getHours() < 10 ? '0' + sentDate.getHours() : sentDate.getHours();
