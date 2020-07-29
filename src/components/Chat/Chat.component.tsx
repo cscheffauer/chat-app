@@ -74,6 +74,8 @@ const Chat = ({ sendMessage, editMessage, messages, ...PropsFromParent }: Props)
 				))}
 			</div>
 			<div className='chatInput'>
+				{' '}
+				{/* TODO: split into separate component */}
 				<form onSubmit={handleSubmit}>
 					<input ref={messageInput} placeholder={'Message'} onChange={handleChange} onBlur={cancelEditMode} value={message} type='text'></input>
 					{editmode && <span>✎</span>}
