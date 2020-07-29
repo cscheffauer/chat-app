@@ -1,6 +1,6 @@
 import React from 'react';
 import Linkify from 'react-linkify';
-import './Chat.scss';
+import './Message.scss';
 import { MessageType } from '../../models/chat.model'
 
 interface Props {
