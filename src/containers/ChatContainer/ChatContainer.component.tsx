@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { MessageType } from '../../models/chat.model';
 
 const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
