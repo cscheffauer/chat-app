@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "chat-client",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^10.4.3",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/enzyme": "^3.10.5",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^24.0.0",
-    "@types/lodash": "^4.14.158",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-linkify": "^1.0.0",
-    "@types/websocket": "^1.0.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.5.0",
-    "lodash": "^4.17.19",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-linkify": "^1.0.0-alpha",
-    "react-scripts": "3.4.1",
-    "react-testing-library": "^8.0.1",
-    "typescript": "~3.7.2",
-    "websocket": "^1.0.31"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  }
-=======
 	"name": "chat-client",
 	"version": "0.1.0",
 	"private": true,
@@ -109,5 +52,4 @@
 			"enzyme-to-json/serializer"
 		]
 	}
->>>>>>> daeb8956aa5276d5731146bf3a0073c04f88f4c7
 }
