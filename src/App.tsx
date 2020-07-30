@@ -4,6 +4,8 @@ import { AppContext } from './AppContextProvider';
 import './index.scss';
 import Homepage from './containers/Homepage/Homepage.component';
 import Header from './components/Header/Header.component';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary.component';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.component';
 
 type connectionType = 'loading' | 'error' | 'established';
 
@@ -26,15 +28,11 @@ const App = () => {
 	const renderConnectionSwitch = () => {
 		switch (connection) {
 			case 'loading':
-				return <p>Loading...</p>;
+				return <LoadingSpinner />;
 			case 'established':
 				return <Homepage />;
 			case 'error':
-				return (
-					<div className='errorboundary'>
-						<h3>Chat is currently unavailable!</h3> <p>Pls contact support.</p>
-					</div>
-				);
+				return <ErrorBoundary errormessage={'Chat is currently unavailable!'} errorsubline={'Pls contact support!'} />;
 			default:
 				return <div />;
 		}
@@ -42,7 +40,7 @@ const App = () => {
 
 	return (
 		<>
-			<Header />
+			<Header title={'Status Meeting Standup'} />
 			{renderConnectionSwitch()}
 		</>
 	);

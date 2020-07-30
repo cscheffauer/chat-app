@@ -1,6 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { AppContext } from '../../AppContextProvider';
 import { MessageType } from '../../models/chat.model';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner.component';
 
 const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
 const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
@@ -32,7 +33,7 @@ const ChatContainer = () => {
 	}
 
 	return (
-		<Suspense fallback={<div style={{ textAlign: 'center' }}> Loading...</div>}>
+		<Suspense fallback={<LoadingSpinner />}>
 			<AsyncTabs setselected={setselected} selected={selected} participantNumber={Object.keys(userList).length} />
 			{selected === 'Userlist' ? <AsyncUserList userList={userList} /> : <AsyncChat messages={messages} />}
 		</Suspense>

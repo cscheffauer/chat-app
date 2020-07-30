@@ -1,11 +1,13 @@
 import React from 'react';
 import './Header.scss';
-interface Props {}
+interface Props {
+	title: string;
+}
 
-const Header = (props: Props) => {
+const Header = ({ title }: Props) => {
 	return (
 		<div className='header'>
-			<p>Status Meeting Standup</p>
+			<p>{title}</p>
 		</div>
 	);
 };

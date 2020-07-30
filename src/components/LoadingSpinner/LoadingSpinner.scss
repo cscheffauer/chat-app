@@ -1,0 +1,17 @@
+@import '../../variables';
+.circleLoading {
+	margin: auto;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	border: $border-style-tabs;
+	border-top-color: $color-message-sender;
+	animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
