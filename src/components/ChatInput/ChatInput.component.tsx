@@ -1,14 +1,13 @@
 import React, { FormEvent, KeyboardEvent } from 'react';
 
 import './ChatInput.scss';
+import { AppContext } from '../../AppContextProvider';
 
 interface Props {
 	parentProps: {
 		messageRef: React.RefObject<HTMLInputElement>;
 		message: string;
 		setmessage: any;
-		sendMessage: (arg0: string) => void;
-		editMessage: (messageid: string, text: string) => void;
 		editmode: boolean;
 		messageidtoedit: string;
 		originalmessage: string;
@@ -17,8 +16,10 @@ interface Props {
 }
 
 const ChatInput = ({ parentProps }: Props) => {
+	const { send, userid, username } = React.useContext(AppContext);
 	const { editmode, messageidtoedit, originalmessage, cancelEditMode } = parentProps;
-	const { messageRef, message, setmessage, sendMessage, editMessage } = parentProps;
+	const { messageRef, message, setmessage } = parentProps;
+
 	const handleChange = (event: FormEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		setmessage(event.currentTarget.value);
@@ -29,11 +30,13 @@ const ChatInput = ({ parentProps }: Props) => {
 		if (message.length > 0) {
 			if (editmode) {
 				if (originalmessage !== message) {
-					editMessage(messageidtoedit, message);
+					send({ id: messageidtoedit, text: message, type: 'editmessageevent' }); //send editmessageevent to backend
 					cancelEditMode();
 				}
 			} else {
-				sendMessage(message);
+				const sent = new Date();
+				const messageJson = { message, username, userid, sent };
+				send({ message: messageJson, type: 'newmessageevent' }); //send newmessageevent to backend
 				setmessage('');
 			}
 		}

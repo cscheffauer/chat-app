@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AppContext } from '../../AppContextProvider';
 import { MessageType } from '../../models/chat.model';
 
 import Message from '../Message/Message.component';
@@ -8,13 +7,10 @@ import ChatInput from '../ChatInput/ChatInput.component';
 import './Chat.scss';
 
 interface Props {
-	send: (json: Object) => void;
 	messages: Array<MessageType>;
-	username: string;
 }
 
-const Chat = ({ send, messages, username }: Props) => {
-	const { userid } = React.useContext(AppContext);
+const Chat = ({ messages }: Props) => {
 	const [message, setmessage] = useState('');
 	const [editmode, seteditmode] = useState(false);
 	const [messageidtoedit, setmessageidtoedit] = useState('' as string);
@@ -22,20 +18,6 @@ const Chat = ({ send, messages, username }: Props) => {
 
 	const messageRef = useRef<HTMLInputElement>(null); //ref for messageRef
 	const scrollArea = useRef<HTMLDivElement>(null); //ref for scrollArea
-
-	const sendMessage = (text: string) => {
-		const sent = new Date();
-		const messageJson = { text, username, userid, sent };
-		send({ message: messageJson, type: 'newmessageevent' });
-	};
-
-	const editMessage = (messageid: string, text: string) => {
-		send({ id: messageid, text: text, type: 'editmessageevent' });
-	};
-
-	const deleteMessage = (messageid: string) => {
-		send({ id: messageid, type: 'deletemessageevent' });
-	};
 
 	useEffect(() => {
 		if (messageRef.current !== null) {
@@ -65,10 +47,10 @@ const Chat = ({ send, messages, username }: Props) => {
 		<div className='chatWindow'>
 			<div ref={scrollArea} className='chatMessages'>
 				{messages.map((message) => (
-					<Message key={message.messageid} message={message} switchToEditMode={switchToEditMode} deleteMessage={deleteMessage} />
+					<Message key={message.messageid} message={message} switchToEditMode={switchToEditMode} />
 				))}
 			</div>
-			<ChatInput parentProps={{ messageRef, message, setmessage, sendMessage, editMessage, editmode, messageidtoedit, originalmessage, cancelEditMode }} />
+			<ChatInput parentProps={{ messageRef, message, setmessage, editmode, messageidtoedit, originalmessage, cancelEditMode }} />
 		</div>
 	);
 };

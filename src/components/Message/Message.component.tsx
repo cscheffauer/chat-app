@@ -7,16 +7,19 @@ import { MessageType } from '../../models/chat.model';
 
 interface Props {
 	switchToEditMode: (messageid: string, messagetext: string) => void;
-	deleteMessage: (messageid: string) => void;
 	message: MessageType;
 }
 
-const Message = ({ switchToEditMode, deleteMessage, message }: Props) => {
-	const { userid } = React.useContext(AppContext);
+const Message = ({ switchToEditMode, message }: Props) => {
+	const { send, userid } = React.useContext(AppContext);
 	const sentDate = new Date(message.sent);
 	const minutes = sentDate.getMinutes() < 10 ? '0' + sentDate.getMinutes() : sentDate.getMinutes();
 	const hours = sentDate.getHours() < 10 ? '0' + sentDate.getHours() : sentDate.getHours();
 	const sent = hours + ':' + minutes;
+
+	const deleteMessage = (messageid: string) => {
+		send({ id: messageid, type: 'deletemessageevent' });
+	};
 
 	return (
 		<div className='message'>

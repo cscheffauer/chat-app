@@ -6,11 +6,8 @@ const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
 const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
 const AsyncTabs = lazy(() => import('../../components/Tabs/Tabs.component'));
 
-interface Props {
-	username: string;
-}
 
-const ChatContainer = ({ username }: Props) => {
+const ChatContainer = () => {
 	const { client, setUserid } = React.useContext(AppContext);
 	const [userList, setuserList] = useState({});
 	const [messages, setmessages] = useState([] as Array<MessageType>);
@@ -35,19 +32,11 @@ const ChatContainer = ({ username }: Props) => {
 		};
 	}
 
-	const send = (json: Object) => {
-		if (client !== null) {
-			client.send(JSON.stringify(json));
-		}
-	};
-
 	return (
-		<div className='chatcontainer'>
-			<Suspense fallback={<div style={{ textAlign: 'center' }}> Loading...</div>}>
-				<AsyncTabs setselected={setselected} selected={selected} participantNumber={Object.keys(userList).length} />
-				{selected === 'Userlist' ? <AsyncUserList userList={userList} /> : <AsyncChat send={send} messages={messages} username={username} />}
-			</Suspense>
-		</div>
+		<Suspense fallback={<div style={{ textAlign: 'center' }}> Loading...</div>}>
+			<AsyncTabs setselected={setselected} selected={selected} participantNumber={Object.keys(userList).length} />
+			{selected === 'Userlist' ? <AsyncUserList userList={userList} /> : <AsyncChat messages={messages}/>}
+		</Suspense>
 	);
 };
 
