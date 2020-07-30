@@ -12,7 +12,7 @@ exports[`<Tabs /> expect to render Tabs component 1`] = `
     <Tab
       selected={2}
       setselected={[MockFunction]}
-      tabIndex={1}
+      tabIndex="Userlist"
       tabName="Participants (8)"
     >
       <div
@@ -27,11 +27,11 @@ exports[`<Tabs /> expect to render Tabs component 1`] = `
     <Tab
       selected={2}
       setselected={[MockFunction]}
-      tabIndex={2}
+      tabIndex="Chat"
       tabName="Chat"
     >
       <div
-        className="tab selected"
+        className="tab "
         onClick={[Function]}
       >
         <p>

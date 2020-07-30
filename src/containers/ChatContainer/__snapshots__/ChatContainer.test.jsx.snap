@@ -5,22 +5,8 @@ exports[`<ChatContainer /> expect to render ChatContainer component 1`] = `
   client={[MockFunction]}
   username="John Doe"
 >
-  <div
-    className="chatcontainer"
-  >
-    <Suspense
-      fallback={
-        <div
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
-        >
-           Loading...
-        </div>
-      }
-    >
+  <Suspense
+    fallback={
       <div
         style={
           Object {
@@ -30,7 +16,17 @@ exports[`<ChatContainer /> expect to render ChatContainer component 1`] = `
       >
          Loading...
       </div>
-    </Suspense>
-  </div>
+    }
+  >
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+       Loading...
+    </div>
+  </Suspense>
 </ChatContainer>
 `;

@@ -42,8 +42,7 @@ exports[`<Chat /> expect to render Chat component 1`] = `
       className="chatMessages"
     >
       <Message
-        deleteMessage={[MockFunction]}
-        key="0"
+        key="1"
         message={
           Object {
             "messageid": "1",
@@ -55,7 +54,6 @@ exports[`<Chat /> expect to render Chat component 1`] = `
           }
         }
         switchToEditMode={[Function]}
-        userid="1234"
       >
         <div
           className="message"
@@ -93,8 +91,7 @@ exports[`<Chat /> expect to render Chat component 1`] = `
         </div>
       </Message>
       <Message
-        deleteMessage={[MockFunction]}
-        key="1"
+        key="2"
         message={
           Object {
             "messageid": "2",
@@ -106,7 +103,6 @@ exports[`<Chat /> expect to render Chat component 1`] = `
           }
         }
         switchToEditMode={[Function]}
-        userid="1234"
       >
         <div
           className="message"
@@ -120,8 +116,7 @@ exports[`<Chat /> expect to render Chat component 1`] = `
         </div>
       </Message>
       <Message
-        deleteMessage={[MockFunction]}
-        key="2"
+        key="3"
         message={
           Object {
             "messageid": "3",
@@ -133,7 +128,6 @@ exports[`<Chat /> expect to render Chat component 1`] = `
           }
         }
         switchToEditMode={[Function]}
-        userid="1234"
       >
         <div
           className="message"
@@ -176,21 +170,41 @@ exports[`<Chat /> expect to render Chat component 1`] = `
         </div>
       </Message>
     </div>
-    <div
-      className="chatInput"
+    <ChatInput
+      parentProps={
+        Object {
+          "cancelEditMode": [Function],
+          "editmode": false,
+          "message": "",
+          "messageRef": Object {
+            "current": <input
+              placeholder="Message"
+              type="text"
+              value=""
+            />,
+          },
+          "messageidtoedit": "",
+          "originalmessage": "",
+          "setmessage": [Function],
+        }
+      }
     >
-      <form
-        onSubmit={[Function]}
+      <div
+        className="chatInput"
       >
-        <input
-          onBlur={[Function]}
-          onChange={[Function]}
-          placeholder="Message"
-          type="text"
-          value=""
-        />
-      </form>
-    </div>
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Message"
+            type="text"
+            value=""
+          />
+        </form>
+      </div>
+    </ChatInput>
   </div>
 </Chat>
 `;

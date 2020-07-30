@@ -30,18 +30,6 @@ exports[`<Message /> expect to render Chat component 1`] = `
       >
         01:00
       </span>
-      <span
-        className="option"
-        onClick={[Function]}
-      >
-        ×
-      </span>
-      <span
-        className="option"
-        onClick={[Function]}
-      >
-        ✎
-      </span>
     </p>
     <Linkify
       componentDecorator={[Function]}

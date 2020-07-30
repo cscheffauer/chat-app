@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chat /> expect to render Chat component 1`] = `undefined`;
+
+exports[`<ChatInput /> expect to render Chat component 1`] = `undefined`;
