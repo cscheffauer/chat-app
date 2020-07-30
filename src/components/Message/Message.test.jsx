@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 
 import Message from './Message.component';
 
+// TODO: rework test with React Context https://stackoverflow.com/questions/54292298/jest-mock-react-context
 describe('<Message />', () => {
 	const useridMock = '1234';
 	const messageidMock = '4321';
@@ -15,7 +16,7 @@ describe('<Message />', () => {
 		jest.clearAllMocks();
 	});
 
-	const wrapperUserSame = mount(<Message switchToEditMode={switchToEditModeMock} deleteMessage={deleteMessageMock} message={messageMock} userid={useridMock} />);
+	const wrapperUserSame = mount(<Message switchToEditMode={switchToEditModeMock} message={messageMock} />);
 
 	it('expect to render Chat component', () => {
 		expect(wrapperUserSame).toMatchSnapshot();
@@ -34,13 +35,13 @@ describe('<Message />', () => {
 			expect(deleteMessageMock).toHaveBeenCalledWith(messageidMock);
 		});
 
-		const wrapperUserDifferent = mount(<Message switchToEditMode={switchToEditModeMock} deleteMessage={deleteMessageMock} message={messageMock} userid={'12'} />);
+		const wrapperUserDifferent = mount(<Message switchToEditMode={switchToEditModeMock} message={messageMock} userid={'12'} />);
 		it('should hide options if user is different than message userid', () => {
 			const options = wrapperUserDifferent.find('.option');
 			expect(options.exists()).toBeFalsy();
 		});
 
-		const wrapperMessageDeleted = mount(<Message switchToEditMode={switchToEditModeMock} deleteMessage={deleteMessageMock} message={deletedMock} userid={'12'} />);
+		const wrapperMessageDeleted = mount(<Message switchToEditMode={switchToEditModeMock} message={deletedMock} userid={'12'} />);
 		it('should show message has been deleted information', () => {
 			const deleted = wrapperMessageDeleted.find('.deleted');
 			expect(deleted.exists()).toBeTruthy();

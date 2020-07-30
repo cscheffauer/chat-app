@@ -2,7 +2,6 @@
 
 exports[`<Message /> expect to render Chat component 1`] = `
 <Message
-  deleteMessage={[MockFunction]}
   message={
     Object {
       "messageid": "4321",
@@ -14,7 +13,6 @@ exports[`<Message /> expect to render Chat component 1`] = `
     }
   }
   switchToEditMode={[MockFunction]}
-  userid="1234"
 >
   <div
     className="message"

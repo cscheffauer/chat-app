@@ -28,7 +28,7 @@ describe('<ChatInput />', () => {
 		jest.clearAllMocks();
 	});
 
-	it('expect to render Chat component', () => {
+	it('expect to render ChatInput component', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 	describe('Testing the Message Functions', () => {
