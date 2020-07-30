@@ -35,8 +35,9 @@ const ChatInput = ({ parentProps }: Props) => {
 				}
 			} else {
 				const sent = new Date();
-				const messageJson = { message, username, userid, sent };
+				const messageJson = { text: message, username, userid, sent };
 				send({ message: messageJson, type: 'newmessageevent' }); //send newmessageevent to backend
+				console.log(messageJson);
 				setmessage('');
 			}
 		}

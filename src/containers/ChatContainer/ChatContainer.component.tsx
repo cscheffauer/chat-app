@@ -6,7 +6,6 @@ const AsyncChat = lazy(() => import('../../components/Chat/Chat.component'));
 const AsyncUserList = lazy(() => import('../../components/UserList/UserList.component'));
 const AsyncTabs = lazy(() => import('../../components/Tabs/Tabs.component'));
 
-
 const ChatContainer = () => {
 	const { client, setUserid } = React.useContext(AppContext);
 	const [userList, setuserList] = useState({});
@@ -16,7 +15,7 @@ const ChatContainer = () => {
 	if (client !== null) {
 		client.onmessage = (incomingMessage: any) => {
 			const newData = JSON.parse(incomingMessage.data);
-
+			console.log(newData);
 			switch (newData.type) {
 				case 'useridevent':
 					setUserid(newData.data.userid); //reacting on incoming user id events and save just the userid
@@ -35,7 +34,7 @@ const ChatContainer = () => {
 	return (
 		<Suspense fallback={<div style={{ textAlign: 'center' }}> Loading...</div>}>
 			<AsyncTabs setselected={setselected} selected={selected} participantNumber={Object.keys(userList).length} />
-			{selected === 'Userlist' ? <AsyncUserList userList={userList} /> : <AsyncChat messages={messages}/>}
+			{selected === 'Userlist' ? <AsyncUserList userList={userList} /> : <AsyncChat messages={messages} />}
 		</Suspense>
 	);
 };
