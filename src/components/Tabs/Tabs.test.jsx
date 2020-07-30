@@ -7,7 +7,7 @@ describe('<Tabs />', () => {
 	const setselectedMock = jest.fn();
 
 	beforeEach(() => {
-		wrapper = mount(<Tabs setselected={setselectedMock} selected={2} participantNumber={8} />);
+		wrapper = mount(<Tabs setselected={setselectedMock} selected={'Chat'} participantNumber={8} />);
 	});
 
 	afterEach(() => {
@@ -19,19 +19,19 @@ describe('<Tabs />', () => {
 
 	describe('Testing the Tabs', () => {
 		it('expect to have the 2nd tab selected initially', () => {
-			const secondTab = wrapper.find({ tabIndex: 2 });
+			const secondTab = wrapper.find({ tabIndex: 'Chat' });
 			expect(secondTab.children().at(0).hasClass('selected')).toBe(true);
 		});
 
 		it('expect to set the selected to 1', () => {
-			const firstTab = wrapper.find({ tabIndex: 1 });
+			const firstTab = wrapper.find({ tabIndex: 'Userlist' });
 			firstTab
 				.children()
 				.at(0)
 				.props()
 				.onClick({ preventDefault() {} });
 
-			expect(setselectedMock).toHaveBeenCalledWith(1); //tab index 1 should be passed to the setselectedMock fn
+			expect(setselectedMock).toHaveBeenCalledWith('Userlist'); //tab index 1 should be passed to the setselectedMock fn
 		});
 	});
 });
