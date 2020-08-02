@@ -1,7 +1,8 @@
 @import '../../variables';
 
 .userlist {
-	height: 84vh;
+	height: 84vh; /* Fallback for browsers that do not support Custom Properties */
+	height: calc(var(--vh, 1vh) * 84);
 	background-color: $color-chat-window;
 	border-left: $border-style-tabs;
 	border-right: $border-style-tabs;
