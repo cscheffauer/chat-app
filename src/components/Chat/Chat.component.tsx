@@ -39,8 +39,10 @@ const Chat = ({ messages }: Props) => {
 	};
 
 	const cancelEditMode = () => {
-		seteditmode(false);
-		setmessage('');
+		if (editmode) {
+			seteditmode(false);
+			setmessage('');
+		}
 	};
 
 	return (
