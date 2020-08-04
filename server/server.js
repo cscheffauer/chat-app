@@ -8,6 +8,7 @@ const server = http.createServer();
 server.listen(webSocketsServerPort);
 const wsServer = new webSocketServer({
 	httpServer: server,
+	maxReceivedFrameSize: 10000000,
 });
 
 const clients = {}; // clients will be stored in this object
@@ -84,8 +85,12 @@ wsServer.on('request', function (request) {
 			broadcast(JSON.stringify(json));
 		}
 	});
+	connection.on('error', function (error) {
+		console.log(error);
+	});
 	// user disconnected
-	connection.on('close', function (connection) {
+	connection.on('close', function (reasonCode, description) {
+		console.log(reasonCode, description);
 		console.log(new Date() + ' User ' + userID + ' disconnected.');
 		delete clients[userID]; //delete userID from clients object
 		if (users[userID] !== undefined) {

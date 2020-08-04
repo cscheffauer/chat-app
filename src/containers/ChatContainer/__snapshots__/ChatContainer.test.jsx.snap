@@ -6,27 +6,13 @@ exports[`<ChatContainer /> expect to render ChatContainer component 1`] = `
   username="John Doe"
 >
   <Suspense
-    fallback={
-      <div
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-         Loading...
-      </div>
-    }
+    fallback={<LoadingSpinner />}
   >
-    <div
-      style={
-        Object {
-          "textAlign": "center",
-        }
-      }
-    >
-       Loading...
-    </div>
+    <LoadingSpinner>
+      <div
+        className="circleLoading"
+      />
+    </LoadingSpinner>
   </Suspense>
 </ChatContainer>
 `;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../utils/AppContextProvider';
 
 import LogIn from '../../components/LogIn/LogIn.component';
 import ChatContainer from '../ChatContainer/ChatContainer.component';

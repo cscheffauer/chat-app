@@ -195,6 +195,28 @@ exports[`<Chat /> expect to render Chat component 1`] = `
         <form
           onSubmit={[Function]}
         >
+          <ImageUpload
+            openImagePreview={[Function]}
+          >
+            <label
+              className="imageupload"
+              htmlFor="imageupload"
+            >
+              📸
+            </label>
+            <input
+              accept="image/png, image/jpeg"
+              id="imageupload"
+              multiple={false}
+              onChange={[Function]}
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+              type="file"
+            />
+          </ImageUpload>
           <input
             onBlur={[Function]}
             onChange={[Function]}

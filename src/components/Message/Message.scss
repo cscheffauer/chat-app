@@ -1,4 +1,4 @@
-@import '../../variables';
+@import '../../utils/variables';
 .message {
 	margin-top: 3vh; /* Fallback for browsers that do not support Custom Properties */
 	margin-top: calc(var(--vh, 1vh) * 3);
@@ -25,5 +25,9 @@
 	.deleted {
 		color: $color-grey;
 		font-weight: 500;
+	}
+	.sentImage {
+		max-width: 100%;
+		max-height: 400px;
 	}
 }

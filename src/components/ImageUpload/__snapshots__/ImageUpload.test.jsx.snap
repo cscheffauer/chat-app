@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageUpload /> expect to render ImageUpload component 1`] = `
+<ImageUpload
+  openImagePreview={[MockFunction]}
+>
+  <label
+    className="imageupload"
+    htmlFor="imageupload"
+  >
+    📸
+  </label>
+  <input
+    accept="image/png, image/jpeg"
+    id="imageupload"
+    multiple={false}
+    onChange={[MockFunction]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
+  />
+</ImageUpload>
+`;

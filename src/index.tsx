@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
-import AppContextProvider from './AppContextProvider';
+import AppContextProvider from './utils/AppContextProvider';
 
 var _ = require('lodash');
 

@@ -5,4 +5,5 @@ export type MessageType = {
 	text: string;
 	messageid: string;
 	state: string;
+	image: string;
 };

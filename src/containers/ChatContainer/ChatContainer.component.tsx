@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../utils/AppContextProvider';
 import { MessageType } from '../../models/chat.model';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner.component';
 

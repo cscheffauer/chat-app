@@ -1,0 +1,24 @@
+@import '../../utils/variables';
+.imagepreview {
+	position: absolute;
+	height: 200px;
+	width: calc(94% - 4px);
+	bottom: calc(calc(var(--vh, 1vh) * 6.5) - 10px);
+	background-color: $color-chat-window;
+	border: $border-style-tabs;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: table-cell;
+	line-height: 190px;
+	img {
+		margin-left: 10px;
+		height: 80%;
+		vertical-align: middle;
+	}
+	.deleteimage {
+		color: $color-grey;
+		float: right;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../utils/AppContextProvider';
 
 import Linkify from 'react-linkify';
 import './Message.scss';
@@ -11,15 +11,11 @@ interface Props {
 }
 
 const Message = ({ switchToEditMode, message }: Props) => {
-	const { send, userid } = React.useContext(AppContext);
+	const { deleteMessage, userid } = React.useContext(AppContext);
 	const sentDate = new Date(message.sent);
 	const minutes = sentDate.getMinutes() < 10 ? '0' + sentDate.getMinutes() : sentDate.getMinutes();
 	const hours = sentDate.getHours() < 10 ? '0' + sentDate.getHours() : sentDate.getHours();
 	const sent = hours + ':' + minutes;
-
-	const deleteMessage = (messageid: string) => {
-		send({ id: messageid, type: 'deletemessageevent' });
-	};
 
 	return (
 		<div className='message'>
@@ -34,7 +30,7 @@ const Message = ({ switchToEditMode, message }: Props) => {
 						{message.username !== 'Meetingbot' &&
 						message.userid === userid && ( //display edit and delete if message is not from the bot and the username is the same
 								<>
-									<span className='option' onClick={() => deleteMessage(message.messageid)}>
+									<span className='option' onClick={() => deleteMessage({ id: message.messageid })}>
 										×
 									</span>
 									<span className='option' onClick={() => switchToEditMode(message.messageid, message.text)}>
@@ -50,7 +46,17 @@ const Message = ({ switchToEditMode, message }: Props) => {
 								color: message.username === 'Meetingbot' ? '#a3a3a3' : 'black',
 							}}
 						>
-							{message.text}
+							{message.image ? (
+								<>
+									<span>
+										{message.text}
+										<br />
+									</span>
+									<img className='sentImage' alt='receivedimage' src={message.image} />
+								</>
+							) : (
+								message.text
+							)}
 						</p>
 					</Linkify>
 				</>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppContext } from './AppContextProvider';
+import { AppContext } from './utils/AppContextProvider';
 
 import './index.scss';
 import Homepage from './containers/Homepage/Homepage.component';
